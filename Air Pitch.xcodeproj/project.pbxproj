@@ -8,12 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		AB43E83B1E461A050071BC4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E83A1E461A050071BC4E /* AppDelegate.swift */; };
-		AB43E83D1E461A050071BC4E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E83C1E461A050071BC4E /* ViewController.swift */; };
 		AB43E8401E461A050071BC4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB43E83E1E461A050071BC4E /* Main.storyboard */; };
 		AB43E8421E461A050071BC4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB43E8411E461A050071BC4E /* Assets.xcassets */; };
 		AB43E8451E461A050071BC4E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB43E8431E461A050071BC4E /* LaunchScreen.storyboard */; };
 		AB43E8501E461A050071BC4E /* Air_PitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E84F1E461A050071BC4E /* Air_PitchTests.swift */; };
 		AB43E85B1E461A050071BC4E /* Air_PitchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E85A1E461A050071BC4E /* Air_PitchUITests.swift */; };
+		AB43E8831E461F080071BC4E /* PitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E83C1E461A050071BC4E /* PitchViewController.swift */; };
+		AB43E8881E4626430071BC4E /* Pitches in Resources */ = {isa = PBXBuildFile; fileRef = AB43E8871E4626430071BC4E /* Pitches */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +37,7 @@
 /* Begin PBXFileReference section */
 		AB43E8371E461A050071BC4E /* Air Pitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Air Pitch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB43E83A1E461A050071BC4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AB43E83C1E461A050071BC4E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		AB43E83C1E461A050071BC4E /* PitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchViewController.swift; sourceTree = "<group>"; };
 		AB43E83F1E461A050071BC4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AB43E8411E461A050071BC4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AB43E8441E461A050071BC4E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -47,6 +48,7 @@
 		AB43E8561E461A050071BC4E /* Air PitchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Air PitchUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB43E85A1E461A050071BC4E /* Air_PitchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Air_PitchUITests.swift; sourceTree = "<group>"; };
 		AB43E85C1E461A050071BC4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB43E8871E4626430071BC4E /* Pitches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pitches; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,11 +100,12 @@
 			isa = PBXGroup;
 			children = (
 				AB43E83A1E461A050071BC4E /* AppDelegate.swift */,
-				AB43E83C1E461A050071BC4E /* ViewController.swift */,
+				AB43E83C1E461A050071BC4E /* PitchViewController.swift */,
 				AB43E83E1E461A050071BC4E /* Main.storyboard */,
 				AB43E8411E461A050071BC4E /* Assets.xcassets */,
 				AB43E8431E461A050071BC4E /* LaunchScreen.storyboard */,
 				AB43E8461E461A050071BC4E /* Info.plist */,
+				AB43E8871E4626430071BC4E /* Pitches */,
 			);
 			path = "Air Pitch";
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				AB43E8451E461A050071BC4E /* LaunchScreen.storyboard in Resources */,
 				AB43E8421E461A050071BC4E /* Assets.xcassets in Resources */,
 				AB43E8401E461A050071BC4E /* Main.storyboard in Resources */,
+				AB43E8881E4626430071BC4E /* Pitches in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,8 +266,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB43E83D1E461A050071BC4E /* ViewController.swift in Sources */,
 				AB43E83B1E461A050071BC4E /* AppDelegate.swift in Sources */,
+				AB43E8831E461F080071BC4E /* PitchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +423,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Dane-Thomas.Air-Pitch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -432,6 +437,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Dane-Thomas.Air-Pitch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -512,6 +518,7 @@
 				AB43E8611E461A050071BC4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB43E8621E461A050071BC4E /* Build configuration list for PBXNativeTarget "Air PitchTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +527,7 @@
 				AB43E8641E461A050071BC4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AB43E8651E461A050071BC4E /* Build configuration list for PBXNativeTarget "Air PitchUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +536,7 @@
 				AB43E8671E461A050071BC4E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
