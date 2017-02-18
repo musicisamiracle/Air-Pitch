@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB16922E1E567F910060F15A /* Audio Files in Resources */ = {isa = PBXBuildFile; fileRef = AB16922D1E567F910060F15A /* Audio Files */; };
+		AB1692311E5792890060F15A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1692301E5792890060F15A /* AVFoundation.framework */; };
 		AB43E83B1E461A050071BC4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E83A1E461A050071BC4E /* AppDelegate.swift */; };
 		AB43E8401E461A050071BC4E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB43E83E1E461A050071BC4E /* Main.storyboard */; };
 		AB43E8421E461A050071BC4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB43E8411E461A050071BC4E /* Assets.xcassets */; };
@@ -14,7 +16,7 @@
 		AB43E8501E461A050071BC4E /* Air_PitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E84F1E461A050071BC4E /* Air_PitchTests.swift */; };
 		AB43E85B1E461A050071BC4E /* Air_PitchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E85A1E461A050071BC4E /* Air_PitchUITests.swift */; };
 		AB43E8831E461F080071BC4E /* PitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E83C1E461A050071BC4E /* PitchViewController.swift */; };
-		AB43E8881E4626430071BC4E /* Pitches in Resources */ = {isa = PBXBuildFile; fileRef = AB43E8871E4626430071BC4E /* Pitches */; };
+		AB7643691E4A9E1F003E22E8 /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB16922D1E567F910060F15A /* Audio Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Audio Files"; sourceTree = "<group>"; };
+		AB1692301E5792890060F15A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		AB43E8371E461A050071BC4E /* Air Pitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Air Pitch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB43E83A1E461A050071BC4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB43E83C1E461A050071BC4E /* PitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchViewController.swift; sourceTree = "<group>"; };
@@ -48,7 +52,7 @@
 		AB43E8561E461A050071BC4E /* Air PitchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Air PitchUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB43E85A1E461A050071BC4E /* Air_PitchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Air_PitchUITests.swift; sourceTree = "<group>"; };
 		AB43E85C1E461A050071BC4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		AB43E8871E4626430071BC4E /* Pitches */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Pitches; sourceTree = "<group>"; };
+		AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +60,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB1692311E5792890060F15A /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +81,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB16922F1E5792890060F15A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AB1692301E5792890060F15A /* AVFoundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AB43E82E1E461A050071BC4E = {
 			isa = PBXGroup;
 			children = (
@@ -83,6 +96,7 @@
 				AB43E84E1E461A050071BC4E /* Air PitchTests */,
 				AB43E8591E461A050071BC4E /* Air PitchUITests */,
 				AB43E8381E461A050071BC4E /* Products */,
+				AB16922F1E5792890060F15A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,7 +119,8 @@
 				AB43E8411E461A050071BC4E /* Assets.xcassets */,
 				AB43E8431E461A050071BC4E /* LaunchScreen.storyboard */,
 				AB43E8461E461A050071BC4E /* Info.plist */,
-				AB43E8871E4626430071BC4E /* Pitches */,
+				AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */,
+				AB16922D1E567F910060F15A /* Audio Files */,
 			);
 			path = "Air Pitch";
 			sourceTree = "<group>";
@@ -238,10 +253,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB16922E1E567F910060F15A /* Audio Files in Resources */,
 				AB43E8451E461A050071BC4E /* LaunchScreen.storyboard in Resources */,
 				AB43E8421E461A050071BC4E /* Assets.xcassets in Resources */,
 				AB43E8401E461A050071BC4E /* Main.storyboard in Resources */,
-				AB43E8881E4626430071BC4E /* Pitches in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +281,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB7643691E4A9E1F003E22E8 /* PlayerButton.swift in Sources */,
 				AB43E83B1E461A050071BC4E /* AppDelegate.swift in Sources */,
 				AB43E8831E461F080071BC4E /* PitchViewController.swift in Sources */,
 			);
