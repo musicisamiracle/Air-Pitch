@@ -82,18 +82,15 @@ import UIKit
         buttons.removeAll()
 
         
-        let bundle = Bundle(for: SpiralButtonsView.self)
-        let buttonImage = UIImage(named: "button", in: bundle, compatibleWith: self.traitCollection)
+        
         
         for index in 0..<numOfButtons {
             
             let button = PlayerButton()
             button.tag = index + 1 // button tags start at 1
-            //button.frame.size = buttonSize
             button.setTitleColor(.white, for: [])
             button.setTitle("test\(button.tag)", for: [])
             button.titleLabel?.adjustsFontSizeToFitWidth = true
-            button.setBackgroundImage(buttonImage, for: [])
             
             //constraints
             button.translatesAutoresizingMaskIntoConstraints = false

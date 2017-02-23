@@ -10,10 +10,8 @@ import UIKit
 import AVFoundation
 
 
-/*TODO:
+/*TODO: change/delete all print statements
         delete created recording file when app resigns active
-        Design the layout
- 
         app icons*/
 
 class PitchViewController: UIViewController, AVAudioPlayerDelegate {
@@ -29,6 +27,8 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
     var timer = Timer()
     let soundArray = ["CLow", "DFlat", "DNatural", "EFlat", "ENatural", "FNatural", "GFlat", "GNatural", "AFlat", "ANatural", "BFlat", "BNatural", "CHigh"]
     let titleArray = ["C Low", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B", "C High"]
+    let hintArray = ["Low C", "C Sharp or D Flat", "D", "D Sharp or E Flat", "E", "F", "F Sharp or G Flat", "G",
+                     "G Sharp or A Flat", "A", "A Sharp or B Flat", "B", "High C"]
     var currentButton: PlayerButton?
     var playMode = PlayMode.blow
     
@@ -201,6 +201,10 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
             
             button.setTitle(titleArray[index], for: [])
             
+            // Accessibility
+            button.accessibilityHint = "Plays a \(hintArray[index])"
+            button.accessibilityLabel = hintArray[index]
+            
             let soundName = soundArray[index]
             guard let filePath = Bundle.main.path(forResource: "\(soundName)", ofType: "m4a", inDirectory: "Audio Files") else {
                 print("Could not find audio file")
@@ -218,6 +222,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
             }
             
             button.addTarget(self, action: #selector(PitchViewController.playPitchFile(_:)), for: .touchUpInside)
+            
         }
     }
     

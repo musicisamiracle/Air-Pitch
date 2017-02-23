@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+// Not in use anymore
 class BackgroundView: UIView {
 
     

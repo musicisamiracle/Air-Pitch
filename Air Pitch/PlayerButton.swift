@@ -15,5 +15,24 @@ class PlayerButton: UIButton {
     
     var soundPlayer: AVAudioPlayer!
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setUpButton()
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+    }
+    
+    func setUpButton() {
+        let bundle = Bundle(for: SpiralButtonsView.self)
+        let buttonImage = UIImage(named: "button", in: bundle, compatibleWith: self.traitCollection)
+        
+        setBackgroundImage(buttonImage, for: [])
+    }
+    
+    
 
 }
