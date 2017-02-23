@@ -19,7 +19,6 @@
 		AB5B52AC1E5DF9EE00237A04 /* SpiralButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B52AB1E5DF9EE00237A04 /* SpiralButtonsView.swift */; };
 		AB5B52AF1E5E47DC00237A04 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B52AE1E5E47DC00237A04 /* GradientView.swift */; };
 		AB7643691E4A9E1F003E22E8 /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */; };
-		ABB0BFEA1E5D14390090AECD /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB0BFE91E5D14390090AECD /* BackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +57,6 @@
 		AB5B52AB1E5DF9EE00237A04 /* SpiralButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpiralButtonsView.swift; sourceTree = "<group>"; };
 		AB5B52AE1E5E47DC00237A04 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
-		ABB0BFE91E5D14390090AECD /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,7 +151,6 @@
 			isa = PBXGroup;
 			children = (
 				AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */,
-				ABB0BFE91E5D14390090AECD /* BackgroundView.swift */,
 				AB5B52AB1E5DF9EE00237A04 /* SpiralButtonsView.swift */,
 				AB5B52AE1E5E47DC00237A04 /* GradientView.swift */,
 			);
@@ -302,7 +299,6 @@
 				AB5B52AC1E5DF9EE00237A04 /* SpiralButtonsView.swift in Sources */,
 				AB5B52AF1E5E47DC00237A04 /* GradientView.swift in Sources */,
 				AB43E83B1E461A050071BC4E /* AppDelegate.swift in Sources */,
-				ABB0BFEA1E5D14390090AECD /* BackgroundView.swift in Sources */,
 				AB43E8831E461F080071BC4E /* PitchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

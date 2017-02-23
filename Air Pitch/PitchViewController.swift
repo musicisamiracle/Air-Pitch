@@ -21,7 +21,6 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
     @IBOutlet weak var spiralButtonsView: SpiralButtonsView!
     @IBOutlet weak var blowOrTapControl: UISegmentedControl!
     
-    @IBOutlet weak var background: BackgroundView!
     var audioSession: AVAudioSession!
     var recorder: AVAudioRecorder!
     var timer = Timer()
@@ -166,6 +165,8 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
         
         do {
             try recorder = AVAudioRecorder(url: filePath, settings: microphoneRecordingSettings)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.microphoneRecorder = recorder
         }
         catch {
             print("could not initialize recorder.")

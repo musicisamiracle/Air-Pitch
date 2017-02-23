@@ -26,6 +26,8 @@ import UIKit
     }
     
     override func layoutSubviews() {
+        super.layoutSubviews()
+        
         (layer as! CAGradientLayer).colors = [topColor.cgColor, bottomColor.cgColor]
         (layer as! CAGradientLayer).locations = [0.5]
     }

@@ -65,14 +65,6 @@
                             </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="color" keyPath="topColor">
-                                <color key="value" red="0.82999999999999996" green="0.20000000000000001" blue="0.16" alpha="0.95012842465753422" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
-                                <color key="value" red="0.75" green="0.63" blue="0.48999999999999999" alpha="0.95077054794520544" colorSpace="calibratedRGB"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
                     </view>
                     <connections>
                         <outlet property="blowOrTapControl" destination="OuM-qe-11L" id="j0D-Yh-Q1f"/>

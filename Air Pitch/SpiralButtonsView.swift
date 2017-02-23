@@ -89,13 +89,11 @@ import UIKit
             let button = PlayerButton()
             button.tag = index + 1 // button tags start at 1
             button.setTitleColor(.white, for: [])
+            button.frame.size = buttonSize
+            
             button.setTitle("test\(button.tag)", for: [])
             button.titleLabel?.adjustsFontSizeToFitWidth = true
-            
-            //constraints
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.heightAnchor.constraint(equalToConstant: buttonSize.height).isActive = true
-            button.widthAnchor.constraint(equalToConstant: buttonSize.width).isActive = true
+
             
             buttons.append(button)
             self.addSubview(button)
