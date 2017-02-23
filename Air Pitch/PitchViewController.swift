@@ -10,10 +10,10 @@ import UIKit
 import AVFoundation
 
 
-/*TODO: make a new view and make it Gradient view instead of using the root view
+/*TODO:
         delete created recording file when app resigns active
         Design the layout
-        button icon
+ 
         app icons*/
 
 class PitchViewController: UIViewController, AVAudioPlayerDelegate {
@@ -22,11 +22,11 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
     
     @IBOutlet weak var spiralButtonsView: SpiralButtonsView!
     @IBOutlet weak var blowOrTapControl: UISegmentedControl!
+    
     @IBOutlet weak var background: BackgroundView!
     var audioSession: AVAudioSession!
     var recorder: AVAudioRecorder!
     var timer = Timer()
-    
     let soundArray = ["CLow", "DFlat", "DNatural", "EFlat", "ENatural", "FNatural", "GFlat", "GNatural", "AFlat", "ANatural", "BFlat", "BNatural", "CHigh"]
     let titleArray = ["C Low", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B", "C High"]
     var currentButton: PlayerButton?
