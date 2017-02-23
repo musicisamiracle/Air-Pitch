@@ -13,7 +13,7 @@ import AVFoundation
 
 class PlayerButton: UIButton {
     
-    var soundPlayer: AVAudioPlayer!
+    var soundPlayer: AVAudioPlayer?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

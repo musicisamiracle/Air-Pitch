@@ -53,7 +53,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
     
     func playInTapMode(button: PlayerButton) {
         
-        currentButton?.soundPlayer.stop()
+        currentButton?.soundPlayer?.stop()
         currentButton?.isSelected = false
         
         // When the user selects button that is currently playing, sound stops and button is de-selected
@@ -62,9 +62,9 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
             return
         }
         
-        button.soundPlayer.currentTime = 0.0
-        button.soundPlayer.volume = 1.0
-        button.soundPlayer.play()
+        button.soundPlayer?.currentTime = 0.0
+        button.soundPlayer?.volume = 1.0
+        button.soundPlayer?.play()
         button.isSelected = true
         currentButton = button
     }
@@ -75,7 +75,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
         if timer.isValid {
             timer.invalidate()
             recorder.stop()
-            currentButton?.soundPlayer.stop()
+            currentButton?.soundPlayer?.stop()
             currentButton?.isSelected = false
         }
         
@@ -85,7 +85,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
         }
         
         button.isSelected = true
-        button.soundPlayer.prepareToPlay()
+        button.soundPlayer?.prepareToPlay()
         recorder.record()
         timer = Timer.scheduledTimer(timeInterval: 0.075, target: self, selector: #selector(PitchViewController.updateMicInput), userInfo: nil, repeats: true)
         currentButton = button
@@ -114,15 +114,15 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
             
             print("sound is happening at \(power)")
             // fade duration matches length of timer before repeating
-            currentButton?.soundPlayer.setVolume(volume, fadeDuration: 0.075)
-            print(currentButton?.soundPlayer.volume.debugDescription ?? "no volume")
-            currentButton?.soundPlayer.play()
+            currentButton?.soundPlayer?.setVolume(volume, fadeDuration: 0.075)
+            print(currentButton?.soundPlayer?.volume.debugDescription ?? "no volume")
+            currentButton?.soundPlayer?.play()
             
         }
         else {
-            currentButton?.soundPlayer.setVolume(0.0, fadeDuration: 0.3)
-            currentButton?.soundPlayer.pause()
-            currentButton?.soundPlayer.currentTime = 0.0
+            currentButton?.soundPlayer?.setVolume(0.0, fadeDuration: 0.3)
+            currentButton?.soundPlayer?.pause()
+            currentButton?.soundPlayer?.currentTime = 0.0
         }
     }
 
@@ -232,7 +232,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
 
         timer.invalidate()
         recorder.stop()
-        currentButton?.soundPlayer.stop()
+        currentButton?.soundPlayer?.stop()
         currentButton?.isSelected = false
         currentButton = nil
         
