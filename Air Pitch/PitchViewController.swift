@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 
 
-/*TODO: add accessibility tags
+/*TODO: make a new view and make it Gradient view instead of using the root view
         delete created recording file when app resigns active
         Design the layout
         button icon
@@ -20,12 +20,15 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
     
     //MARK: Properties
     
-    @IBOutlet weak var pitchViewContainer: UIView!
+    @IBOutlet weak var spiralButtonsView: SpiralButtonsView!
+    @IBOutlet weak var blowOrTapControl: UISegmentedControl!
+    @IBOutlet weak var background: BackgroundView!
     var audioSession: AVAudioSession!
     var recorder: AVAudioRecorder!
     var timer = Timer()
     
     let soundArray = ["CLow", "DFlat", "DNatural", "EFlat", "ENatural", "FNatural", "GFlat", "GNatural", "AFlat", "ANatural", "BFlat", "BNatural", "CHigh"]
+    let titleArray = ["C Low", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B", "C High"]
     var currentButton: PlayerButton?
     var playMode = PlayMode.blow
     
@@ -37,7 +40,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
     
     //MARK: Actions
     
-    @IBAction func playPitchFile(_ sender: PlayerButton) {
+    func playPitchFile(_ sender: PlayerButton) {
 
         
         if playMode == .tap {
@@ -112,7 +115,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
             print("sound is happening at \(power)")
             // fade duration matches length of timer before repeating
             currentButton?.soundPlayer.setVolume(volume, fadeDuration: 0.075)
-            print(currentButton?.soundPlayer.volume)
+            print(currentButton?.soundPlayer.volume.debugDescription ?? "no volume")
             currentButton?.soundPlayer.play()
             
         }
@@ -126,6 +129,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // create buttons in a spiral
         createSoundButtons()
 
         
@@ -188,20 +192,16 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
     
     //MARK: Private Methods
     
+
     private func createSoundButtons() {
         
-        for aButton in pitchViewContainer.subviews {
-            guard let button = aButton as? PlayerButton else {
-                print("\(aButton) is not a button")
-                return
-            }
+        for button in spiralButtonsView.buttons {
             
-            button.setBackgroundImage(UIImage(named: "selected") , for: [.selected])
+            let index = button.tag - 1
             
-        
-            let index = button.tag - 1  // button tags start at 1
+            button.setTitle(titleArray[index], for: [])
+            
             let soundName = soundArray[index]
-            
             guard let filePath = Bundle.main.path(forResource: "\(soundName)", ofType: "m4a", inDirectory: "Audio Files") else {
                 print("Could not find audio file")
                 return
@@ -216,6 +216,8 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
             catch {
                 print("Could not create player for \(soundName)")
             }
+            
+            button.addTarget(self, action: #selector(PitchViewController.playPitchFile(_:)), for: .touchUpInside)
         }
     }
     

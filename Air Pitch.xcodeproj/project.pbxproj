@@ -16,7 +16,10 @@
 		AB43E8501E461A050071BC4E /* Air_PitchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E84F1E461A050071BC4E /* Air_PitchTests.swift */; };
 		AB43E85B1E461A050071BC4E /* Air_PitchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E85A1E461A050071BC4E /* Air_PitchUITests.swift */; };
 		AB43E8831E461F080071BC4E /* PitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E83C1E461A050071BC4E /* PitchViewController.swift */; };
+		AB5B52AC1E5DF9EE00237A04 /* SpiralButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B52AB1E5DF9EE00237A04 /* SpiralButtonsView.swift */; };
+		AB5B52AF1E5E47DC00237A04 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B52AE1E5E47DC00237A04 /* GradientView.swift */; };
 		AB7643691E4A9E1F003E22E8 /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */; };
+		ABB0BFEA1E5D14390090AECD /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABB0BFE91E5D14390090AECD /* BackgroundView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +55,10 @@
 		AB43E8561E461A050071BC4E /* Air PitchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Air PitchUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB43E85A1E461A050071BC4E /* Air_PitchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Air_PitchUITests.swift; sourceTree = "<group>"; };
 		AB43E85C1E461A050071BC4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AB5B52AB1E5DF9EE00237A04 /* SpiralButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpiralButtonsView.swift; sourceTree = "<group>"; };
+		AB5B52AE1E5E47DC00237A04 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
+		ABB0BFE91E5D14390090AECD /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,8 +124,8 @@
 				AB43E83E1E461A050071BC4E /* Main.storyboard */,
 				AB43E8411E461A050071BC4E /* Assets.xcassets */,
 				AB43E8431E461A050071BC4E /* LaunchScreen.storyboard */,
+				AB5B52AD1E5E457C00237A04 /* Views */,
 				AB43E8461E461A050071BC4E /* Info.plist */,
-				AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */,
 				AB16922D1E567F910060F15A /* Audio Files */,
 			);
 			path = "Air Pitch";
@@ -141,6 +147,17 @@
 				AB43E85C1E461A050071BC4E /* Info.plist */,
 			);
 			path = "Air PitchUITests";
+			sourceTree = "<group>";
+		};
+		AB5B52AD1E5E457C00237A04 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */,
+				ABB0BFE91E5D14390090AECD /* BackgroundView.swift */,
+				AB5B52AB1E5DF9EE00237A04 /* SpiralButtonsView.swift */,
+				AB5B52AE1E5E47DC00237A04 /* GradientView.swift */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,7 +299,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB7643691E4A9E1F003E22E8 /* PlayerButton.swift in Sources */,
+				AB5B52AC1E5DF9EE00237A04 /* SpiralButtonsView.swift in Sources */,
+				AB5B52AF1E5E47DC00237A04 /* GradientView.swift in Sources */,
 				AB43E83B1E461A050071BC4E /* AppDelegate.swift in Sources */,
+				ABB0BFEA1E5D14390090AECD /* BackgroundView.swift in Sources */,
 				AB43E8831E461F080071BC4E /* PitchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
