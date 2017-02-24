@@ -10,10 +10,10 @@ import UIKit
 import AVFoundation
 
 
-/*TODO: make an info view controller
+/*TODO: record a new B natural
+        make an info view controller
         make background to buttons to show selection
         change/delete all print statements
-        delete created recording file when app resigns active
         app icons*/
 
 class PitchViewController: UIViewController, AVAudioPlayerDelegate {

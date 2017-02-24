@@ -1,5 +1,5 @@
 //
-//  SpiralButtons.swift
+//  SpiralButtonsView.swift
 //  Air Pitch
 //
 //  Created by Dane Thomas on 2/22/17.
