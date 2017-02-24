@@ -10,7 +10,8 @@ import UIKit
 import AVFoundation
 
 
-/*TODO: make background to buttons to show selection
+/*TODO: make an info view controller
+        make background to buttons to show selection
         change/delete all print statements
         delete created recording file when app resigns active
         app icons*/
@@ -36,6 +37,60 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
     enum PlayMode {
         case tap
         case blow
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // create buttons in a spiral
+        createSoundButtons()
+        
+        
+        // set up the audio session
+        audioSession = AVAudioSession.sharedInstance()
+        
+        audioSession.requestRecordPermission { (allowed) in
+            if allowed {
+                //TODO: Change this to show an alert to allow recording in settings
+                print("recording allowed")
+            }
+        }
+        
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            //try audioSession.setMode(AVAudioSessionModeMeasurement)
+            try audioSession.overrideOutputAudioPort(.speaker)
+            try audioSession.setPreferredSampleRate(441000)
+            try audioSession.setPreferredIOBufferDuration(0.006)
+            try audioSession.setActive(true)
+        }
+        catch {
+            print("could not activate session")
+            print(error.localizedDescription)
+        }
+        
+        // This file saves the recording, which does not get used again. It is necessary to create an AVAudioRecorder
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let filePath = documentsDirectory.appendingPathComponent("micRecording.m4a")
+        
+        let microphoneRecordingSettings: [String : Any] = [AVFormatIDKey: kAudioFormatMPEG4AAC,
+                                                           AVSampleRateKey: 8000.0,
+                                                           AVNumberOfChannelsKey: 1,
+                                                           AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue]
+        
+        do {
+            try recorder = AVAudioRecorder(url: filePath, settings: microphoneRecordingSettings)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.microphoneRecorder = recorder
+        }
+        catch {
+            print("could not initialize recorder.")
+        }
+        
+        recorder.prepareToRecord()
+        recorder.isMeteringEnabled = true
+        
+        
     }
     
     //MARK: Actions
@@ -96,12 +151,6 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
         
         recorder.updateMeters()
         
-        /*print("gain: \(audioSession.inputGain)")
-         print("sample rate: \(audioSession.sampleRate)")
-         print("buffer: \(audioSession.ioBufferDuration)")
-         print("latency: \(audioSession.inputLatency)")
-         print("input channels: \(audioSession.inputNumberOfChannels)")*/
-        
         let power = recorder.averagePower(forChannel: 0)
         //TODO: Change this later once the blowing sounds natural
         // every change in 1 decible between -13 and -3 changes volume by 1/15th
@@ -124,59 +173,6 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
             currentButton?.soundPlayer?.pause()
             currentButton?.soundPlayer?.currentTime = 0.0
         }
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // create buttons in a spiral
-        createSoundButtons()
-
-        
-        // set up the audio session
-        audioSession = AVAudioSession.sharedInstance()
-        
-        audioSession.requestRecordPermission { (allowed) in
-            if allowed {
-                print("recording allowed")
-            }
-        }
-        
-        do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            //try audioSession.setMode(AVAudioSessionModeMeasurement)
-            try audioSession.overrideOutputAudioPort(.speaker)
-            try audioSession.setPreferredSampleRate(441000)
-            try audioSession.setPreferredIOBufferDuration(0.006)
-            try audioSession.setActive(true)
-        }
-        catch {
-            print("could not activate session")
-            print(error.localizedDescription)
-        }
-        
-        // This file saves the recording, which does not get used again. It is necessary to create an AVAudioRecorder
-        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-        let filePath = documentsDirectory.appendingPathComponent("testRecording.m4a")
-        
-        let microphoneRecordingSettings: [String : Any] = [AVFormatIDKey: kAudioFormatMPEG4AAC,
-                                                           AVSampleRateKey: 8000.0,
-                                                           AVNumberOfChannelsKey: 1,
-                                                           AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue]
-        
-        do {
-            try recorder = AVAudioRecorder(url: filePath, settings: microphoneRecordingSettings)
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.microphoneRecorder = recorder
-        }
-        catch {
-            print("could not initialize recorder.")
-        }
-        
-        recorder.prepareToRecord()
-        recorder.isMeteringEnabled = true
-        
-
     }
     
     //MARK: AVAudioPlayerDelegate

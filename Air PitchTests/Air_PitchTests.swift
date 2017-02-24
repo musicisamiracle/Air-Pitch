@@ -12,9 +12,16 @@ import AVFoundation
 
 class Air_PitchTests: XCTestCase {
     
+    var vc: PitchViewController!
+    
     override func setUp() {
         super.setUp()
-
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle(for: PitchViewController.self))
+        vc = storyBoard.instantiateInitialViewController() as! PitchViewController
+        
+        XCTAssertNotNil(vc.view, "The view was not loaded")
+        
     }
     
     override func tearDown() {
@@ -57,18 +64,22 @@ class Air_PitchTests: XCTestCase {
     
     //MARK: PitchViewController
     func testPlayInTapMode() {
-        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle(for: PitchViewController.self))
-        let vc = storyBoard.instantiateInitialViewController() as! PitchViewController
-        
-        XCTAssertNotNil(vc.view, "The view was not loaded")
-        
         let button = vc.spiralButtonsView.buttons[0]
         vc.playInTapMode(button: button)
         
         XCTAssert(vc.currentButton!.soundPlayer!.isPlaying, "Sound did not play")
         vc.currentButton?.soundPlayer?.stop()
+    }
+    
+    func testPlayInBlowMode() {
+        let button = vc.spiralButtonsView.buttons[0]
+        vc.playInBlowMode(button: button)
         
+        XCTAssert(vc.recorder.isRecording, "Recorder is not recording")
         
+        XCTAssert(vc.timer.isValid, "Timer did not start")
+        vc.timer.invalidate()
+        vc.recorder.stop()
     }
     
 }
