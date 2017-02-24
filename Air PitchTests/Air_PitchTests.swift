@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import AVFoundation
 @testable import Air_Pitch
 
 class Air_PitchTests: XCTestCase {
@@ -54,5 +55,20 @@ class Air_PitchTests: XCTestCase {
         XCTAssertEqual(testButton.frame.width, 50)
     }
     
+    //MARK: PitchViewController
+    func testPlayInTapMode() {
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle(for: PitchViewController.self))
+        let vc = storyBoard.instantiateInitialViewController() as! PitchViewController
+        
+        XCTAssertNotNil(vc.view, "The view was not loaded")
+        
+        let button = vc.spiralButtonsView.buttons[0]
+        vc.playInTapMode(button: button)
+        
+        XCTAssert(vc.currentButton!.soundPlayer!.isPlaying, "Sound did not play")
+        vc.currentButton?.soundPlayer?.stop()
+        
+        
+    }
     
 }

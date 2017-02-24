@@ -10,7 +10,8 @@ import UIKit
 import AVFoundation
 
 
-/*TODO: change/delete all print statements
+/*TODO: make background to buttons to show selection
+        change/delete all print statements
         delete created recording file when app resigns active
         app icons*/
 
@@ -245,7 +246,8 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
+        recorder.deleteRecording()
     }
 
 
