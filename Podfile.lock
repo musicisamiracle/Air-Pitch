@@ -1,0 +1,29 @@
+PODS:
+  - ChameleonFramework/Default (2.1.0)
+  - ChameleonFramework/Swift (2.1.0):
+    - ChameleonFramework/Default
+  - Pulsator (0.3.0)
+  - TwicketSegmentedControl (0.1.1)
+
+DEPENDENCIES:
+  - ChameleonFramework/Swift (from `https://github.com/ViccAlexander/Chameleon.git`)
+  - Pulsator
+  - TwicketSegmentedControl
+
+EXTERNAL SOURCES:
+  ChameleonFramework:
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+CHECKOUT OPTIONS:
+  ChameleonFramework:
+    :commit: dcf98f9bf3a632a7f40679b7da46f09681e48526
+    :git: https://github.com/ViccAlexander/Chameleon.git
+
+SPEC CHECKSUMS:
+  ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
+  Pulsator: '0191f14f7ab82d6dbde6fdbde42036f07a4450e3'
+  TwicketSegmentedControl: bbb2d155792dbfcee7fea995a614d0c0a3de4a16
+
+PODFILE CHECKSUM: '09b4a3c883f759db15c3ab2cc9988a5a59c9d65e'
+
+COCOAPODS: 1.1.1

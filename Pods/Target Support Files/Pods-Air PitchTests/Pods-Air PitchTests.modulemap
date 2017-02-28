@@ -1,0 +1,6 @@
+framework module Pods_Air_PitchTests {
+  umbrella header "Pods-Air PitchTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
