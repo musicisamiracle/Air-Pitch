@@ -8,7 +8,9 @@
 
 import UIKit
 import AVFoundation
-
+import ChameleonFramework
+import Pulsator
+import TwicketSegmentedControl
 
 /*TODO: record a new B natural
         make an info view controller
@@ -21,7 +23,8 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
     //MARK: Properties
     
     @IBOutlet weak var spiralButtonsView: SpiralButtonsView!
-    @IBOutlet weak var blowOrTapControl: UISegmentedControl!
+
+    @IBOutlet weak var blowOrTapControl: TwicketSegmentedControl!
     
     var audioSession: AVAudioSession!
     var recorder: AVAudioRecorder!
@@ -41,6 +44,15 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.backgroundColor = UIColor(gradientStyle: .topToBottom, withFrame: view.frame, andColors: [UIColor.flatRedDark, UIColor.flatSand])
+        
+        blowOrTapControl.setSegmentItems(["Blow", "Tap"])
+        //This line is not working
+        //blowOrTapControl.segmentsBackgroundColor = .flatRed
+        blowOrTapControl.sliderBackgroundColor = .flatBlackDark
+        blowOrTapControl.backgroundColor = .clear
+        
         
         // create buttons in a spiral
         createSoundButtons()
@@ -226,7 +238,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
     
     //MARK: Segmented Control
     
-    @IBAction func tapOrBlow(_ sender: UISegmentedControl) {
+    /*@IBAction func tapOrBlow(_ sender: TwicketSegmentedControl) {
 
         timer.invalidate()
         recorder.stop()
@@ -236,7 +248,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
         
         playMode = sender.selectedSegmentIndex == 0 ? PlayMode.blow : PlayMode.tap
     
-    }
+    }*/
     
     
 

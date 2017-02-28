@@ -90,10 +90,13 @@ import UIKit
             button.tag = index + 1 // button tags start at 1
             button.setTitleColor(.white, for: [])
             button.frame.size = buttonSize
-            
             button.setTitle("test\(button.tag)", for: [])
             button.titleLabel?.adjustsFontSizeToFitWidth = true
 
+            button.layer.masksToBounds = false
+            button.layer.shadowColor = UIColor.darkGray.cgColor
+            button.layer.shadowOpacity = 1.0
+            button.layer.shadowOffset = CGSize(width: 0, height: 0.3)
             
             buttons.append(button)
             self.addSubview(button)
