@@ -51,8 +51,7 @@ import UIKit
         // must be in radians because the Darwin trig functions use radians
         let angleInc = (360.0 / 12.0) * (M_PI / 180)
         
-        let circleCenter = CGPoint(x: self.center.x + (buttonSize.width / 4), y: self.center.y)
-        
+        let circleCenter = CGPoint(x: self.center.x + (buttonSize.width / 4), y: (buttonSize.height) + (radius + (radiusInc * (CGFloat(numOfButtons) - 1))))
         for button in buttons {
             
             let x = circleCenter.x + CGFloat(cos(angle)) * radius

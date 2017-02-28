@@ -28,8 +28,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Maz-fD-mPy" customClass="TwicketSegmentedControl" customModule="TwicketSegmentedControl">
+                                <rect key="frame" x="16" y="69" width="359" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JMN-eQ-XPh" customClass="SpiralButtonsView" customModule="Air_Pitch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="81" width="375" height="449"/>
+                                <rect key="frame" x="0.0" y="164" width="375" height="457"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <userDefinedRuntimeAttributes>
@@ -38,20 +43,11 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="50Q-vq-ezT" customClass="TwicketSegmentedControl" customModule="TwicketSegmentedControl">
-                                <rect key="frame" x="16" y="55" width="343" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <action selector="tapOrBlow:" destination="BYZ-38-t0r" eventType="valueChanged" id="fXI-c9-v8R"/>
-                                </connections>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="blowOrTapControl" destination="50Q-vq-ezT" id="4Pl-AC-GM6"/>
+                        <outlet property="blowOrTapControl" destination="Maz-fD-mPy" id="pa8-ZO-Ps9"/>
                         <outlet property="spiralButtonsView" destination="JMN-eQ-XPh" id="Jfd-Fz-z5C"/>
                     </connections>
                 </viewController>

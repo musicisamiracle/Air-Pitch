@@ -46,12 +46,14 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
         super.viewDidLoad()
         
         view.backgroundColor = UIColor(gradientStyle: .topToBottom, withFrame: view.frame, andColors: [UIColor.flatRedDark, UIColor.flatSand])
-        
+
         blowOrTapControl.setSegmentItems(["Blow", "Tap"])
         //This line is not working
-        //blowOrTapControl.segmentsBackgroundColor = .flatRed
+        blowOrTapControl.defaultTextColor = .flatBlackDark
         blowOrTapControl.sliderBackgroundColor = .flatBlackDark
         blowOrTapControl.backgroundColor = .clear
+        
+        view.addSubview(blowOrTapControl)
         
         
         // create buttons in a spiral
