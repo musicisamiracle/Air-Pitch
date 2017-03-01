@@ -22,6 +22,7 @@
 		AB5B52AF1E5E47DC00237A04 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B52AE1E5E47DC00237A04 /* GradientView.swift */; };
 		AB5B52B11E60909D00237A04 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B52B01E60909D00237A04 /* InfoViewController.swift */; };
 		AB7643691E4A9E1F003E22E8 /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */; };
+		ABF6D1FE1E67709200295495 /* AirAmericana.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABF6D1FD1E67709200295495 /* AirAmericana.ttf */; };
 		AE7891CB4D88FCC12E838FA1 /* Pods_Air_PitchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 266B6E67BEBCC1628CCB4DBF /* Pods_Air_PitchTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -68,6 +69,7 @@
 		AB5B52AE1E5E47DC00237A04 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
 		AB5B52B01E60909D00237A04 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
+		ABF6D1FD1E67709200295495 /* AirAmericana.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirAmericana.ttf; sourceTree = "<group>"; };
 		B28C9D32569C0329DA2E2CD6 /* Pods-Air Pitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air Pitch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Air Pitch/Pods-Air Pitch.debug.xcconfig"; sourceTree = "<group>"; };
 		BD409C4FE51ADCAA367C6818 /* Pods-Air Pitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air Pitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Air Pitch/Pods-Air Pitch.release.xcconfig"; sourceTree = "<group>"; };
 		E4F71FA4ECED9EDAB2DE44C9 /* Pods_Air_PitchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Air_PitchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +140,7 @@
 		AB43E8391E461A050071BC4E /* Air Pitch */ = {
 			isa = PBXGroup;
 			children = (
+				ABF6D1FD1E67709200295495 /* AirAmericana.ttf */,
 				AB43E83A1E461A050071BC4E /* AppDelegate.swift */,
 				AB5B52B21E6090AA00237A04 /* View Controllers */,
 				AB43E83E1E461A050071BC4E /* Main.storyboard */,
@@ -323,6 +326,7 @@
 				AB43E8451E461A050071BC4E /* LaunchScreen.storyboard in Resources */,
 				AB43E8421E461A050071BC4E /* Assets.xcassets in Resources */,
 				AB43E8401E461A050071BC4E /* Main.storyboard in Resources */,
+				ABF6D1FE1E67709200295495 /* AirAmericana.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +644,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B28C9D32569C0329DA2E2CD6 /* Pods-Air Pitch.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MBDF9Z8ZCX;
 				INFOPLIST_FILE = "Air Pitch/Info.plist";
@@ -655,6 +660,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BD409C4FE51ADCAA367C6818 /* Pods-Air Pitch.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MBDF9Z8ZCX;
 				INFOPLIST_FILE = "Air Pitch/Info.plist";

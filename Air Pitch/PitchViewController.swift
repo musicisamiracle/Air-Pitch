@@ -51,11 +51,12 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         view.backgroundColor = UIColor(gradientStyle: .topToBottom, withFrame: view.frame, andColors: [UIColor.flatRedDark, UIColor.flatSand])
         
         navBar.barTintColor = .flatBlackDark
-        navBar.titleTextAttributes = [NSFontAttributeName: blowOrTapControl.font, NSForegroundColorAttributeName: UIColor.flatWhite]
+        navBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "AirAmericana", size: 17)!, NSForegroundColorAttributeName: UIColor.flatWhite]
 
         blowOrTapControl.setSegmentItems(["Blow", "Tap"])
         blowOrTapControl.sliderBackgroundColor = .flatBlackDark
         blowOrTapControl.defaultTextColor = .flatBlackDark
+        blowOrTapControl.font = UIFont(name: "AirAmericana", size: 15)!
         blowOrTapControl.backgroundColor = .clear
         blowOrTapControl.delegate = self
 
@@ -176,7 +177,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         
         let power = recorder.averagePower(forChannel: 0)
         //TODO: Change this later once the blowing sounds natural
-        // every change in 1 decible between -13 and -3 changes volume by 1/15th
+        // every change in 1 decible between -13 and -3 changes volume by 0.1
         let decibleConversion = power + 3  // adding 3 to power makes -3 decibels equal to 0 change to volume
         let volumeAdjustment = Float(decibleConversion / 10)
         
@@ -185,7 +186,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         if power >= -13 {
             
             print("sound is happening at \(power)")
-            // fade duration matches length of timer before repeating
+            // Fade duration matches length of timer before repeating
             currentButton?.soundPlayer?.setVolume(volume, fadeDuration: 0.075)
             print(currentButton?.soundPlayer?.volume.debugDescription ?? "no volume")
             currentButton?.soundPlayer?.play()
@@ -208,6 +209,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
+        //TODO: Create an alert
         print(error.debugDescription)
     }
     
@@ -221,7 +223,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
             let index = button.tag - 1
             
             button.setTitle(titleArray[index], for: [])
-            button.titleLabel?.font = blowOrTapControl.font
+            button.titleLabel?.font = UIFont(name: "AirAmericana", size: 17)
             
             // Accessibility
             button.accessibilityHint = "Plays a \(hintArray[index])"
@@ -249,18 +251,6 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     }
     
     //MARK: Twicket Segmented Control Delegate
-    
-    /*@IBAction func tapOrBlow(_ sender: TwicketSegmentedControl) {
-
-        timer.invalidate()
-        recorder.stop()
-        currentButton?.soundPlayer?.stop()
-        currentButton?.isSelected = false
-        currentButton = nil
-        
-        playMode = sender.selectedSegmentIndex == 0 ? PlayMode.blow : PlayMode.tap
-    
-    }*/
     
     func didSelect(_ segmentIndex: Int) {
         timer.invalidate()

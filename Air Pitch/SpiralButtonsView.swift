@@ -93,7 +93,6 @@ import UIKit
             button.frame.size = buttonSize
             button.setTitle("test\(button.tag)", for: [])
             button.titleLabel?.textAlignment = .center
-            button.titleLabel?.numberOfLines = 0
             
             button.setBackgroundImage(buttonImage, for: [])
 

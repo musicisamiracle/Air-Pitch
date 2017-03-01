@@ -32,7 +32,7 @@ class Air_PitchTests: XCTestCase {
     func testSetUpButton() {
         let button = PlayerButton()
         
-        XCTAssertEqual(button.backgroundImage(for: []), UIImage(named: "button"))
+        XCTAssertNotNil(button.pulsator)
         
     }
 
