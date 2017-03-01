@@ -32,7 +32,7 @@ class Air_PitchTests: XCTestCase {
     func testSetUpButton() {
         let button = PlayerButton()
         
-        XCTAssertNotNil(button.pulsator)
+        XCTAssertNotNil(button)
         
     }
 
