@@ -42,9 +42,10 @@ import UIKit
     
    override func layoutSubviews() {
         super.layoutSubviews()
+    
+    
         
-        
-        var radius = self.bounds.width / 3
+        var radius = self.bounds.width / 3 < self.bounds.height / 4 ? self.bounds.width / 3 : self.bounds.height / 4
         let radiusInc = radius / (buttonSize.width / 2)
         // This makes the first button be the topmost button
         var angle = 270.0  * (M_PI / 180)
@@ -88,10 +89,12 @@ import UIKit
             
             let button = PlayerButton()
             button.tag = index + 1 // button tags start at 1
-            button.setTitleColor(.white, for: [])
+            button.setTitleColor(.flatWhite, for: [])
             button.frame.size = buttonSize
             button.setTitle("test\(button.tag)", for: [])
-            button.titleLabel?.adjustsFontSizeToFitWidth = true
+            button.titleLabel?.textAlignment = .center
+            button.titleLabel?.numberOfLines = 0
+            
             button.setBackgroundImage(buttonImage, for: [])
 
             button.layer.masksToBounds = false

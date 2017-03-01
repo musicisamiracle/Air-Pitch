@@ -21,33 +21,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Air Pitch" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uwb-bg-sP0">
-                                <rect key="frame" x="16" y="20" width="359" height="36"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="37"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Maz-fD-mPy" customClass="TwicketSegmentedControl" customModule="TwicketSegmentedControl">
-                                <rect key="frame" x="16" y="69" width="359" height="47"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JMN-eQ-XPh" customClass="SpiralButtonsView" customModule="Air_Pitch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="164" width="375" height="457"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="numOfButtons">
-                                        <integer key="value" value="13"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Qqt-LI-d1D">
+                                <rect key="frame" x="0.0" y="84" width="375" height="563"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Maz-fD-mPy" customClass="TwicketSegmentedControl" customModule="TwicketSegmentedControl">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JMN-eQ-XPh" customClass="SpiralButtonsView" customModule="Air_Pitch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="60" width="375" height="503"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="numOfButtons">
+                                                <integer key="value" value="13"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="JMN-eQ-XPh" firstAttribute="top" secondItem="Qqt-LI-d1D" secondAttribute="top" constant="60" id="aY7-0I-waA"/>
+                                </constraints>
+                            </stackView>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kG-2z-M5b">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="t4e-UU-fE7"/>
+                                </constraints>
+                                <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <items>
+                                    <navigationItem title="Air Pitch" id="xEp-CG-zt2"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Qqt-LI-d1D" firstAttribute="top" secondItem="5kG-2z-M5b" secondAttribute="bottom" constant="20" id="4YZ-Kl-qfO"/>
+                            <constraint firstItem="5kG-2z-M5b" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="O7I-5S-jxZ"/>
+                            <constraint firstItem="5kG-2z-M5b" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Oom-oY-qMD"/>
+                            <constraint firstItem="5kG-2z-M5b" firstAttribute="leading" secondItem="Qqt-LI-d1D" secondAttribute="leading" id="XCo-kq-z20"/>
+                            <constraint firstItem="5kG-2z-M5b" firstAttribute="trailing" secondItem="Qqt-LI-d1D" secondAttribute="trailing" id="lqZ-bl-UwI"/>
+                            <constraint firstAttribute="trailing" secondItem="5kG-2z-M5b" secondAttribute="trailing" id="xiA-fI-Rbi"/>
+                            <constraint firstAttribute="bottom" secondItem="Qqt-LI-d1D" secondAttribute="bottom" constant="20" symbolic="YES" id="y1Q-RM-iaq"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="blowOrTapControl" destination="Maz-fD-mPy" id="pa8-ZO-Ps9"/>
+                        <outlet property="navBar" destination="5kG-2z-M5b" id="N8p-NM-JEp"/>
                         <outlet property="spiralButtonsView" destination="JMN-eQ-XPh" id="Jfd-Fz-z5C"/>
                     </connections>
                 </viewController>
@@ -71,7 +89,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="17c-PX-7kW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1078" y="124"/>
+            <point key="canvasLocation" x="1077.5999999999999" y="123.68815592203899"/>
         </scene>
     </scenes>
 </document>

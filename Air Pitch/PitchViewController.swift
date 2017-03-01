@@ -12,17 +12,18 @@ import ChameleonFramework
 import Pulsator
 import TwicketSegmentedControl
 
-/*TODO: add pulsator to buttons
+/*TODO: adjust navBar title
+        consider a highlight visual change for buttons
         record a new B natural
         make an info view controller
-        make background to buttons to show selection
         change/delete all print statements
         app icons*/
 
-class PitchViewController: UIViewController, AVAudioPlayerDelegate {
+class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegmentedControlDelegate {
     
     //MARK: Properties
     
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var spiralButtonsView: SpiralButtonsView!
 
     @IBOutlet weak var blowOrTapControl: TwicketSegmentedControl!
@@ -46,13 +47,18 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setStatusBarStyle(.lightContent)
         view.backgroundColor = UIColor(gradientStyle: .topToBottom, withFrame: view.frame, andColors: [UIColor.flatRedDark, UIColor.flatSand])
+        
+        navBar.barTintColor = .flatBlackDark
+        navBar.titleTextAttributes = [NSFontAttributeName: blowOrTapControl.font, NSForegroundColorAttributeName: UIColor.flatWhite]
 
         blowOrTapControl.setSegmentItems(["Blow", "Tap"])
         blowOrTapControl.sliderBackgroundColor = .flatBlackDark
+        blowOrTapControl.defaultTextColor = .flatBlackDark
         blowOrTapControl.backgroundColor = .clear
-        
-        view.addSubview(blowOrTapControl)
+        blowOrTapControl.delegate = self
+
         
         
         // create buttons in a spiral
@@ -123,6 +129,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
         
         currentButton?.soundPlayer?.stop()
         currentButton?.isSelected = false
+        currentButton?.pulsator.stop()
         
         // When the user selects button that is currently playing, sound stops and button is de-selected
         if currentButton === button {
@@ -130,6 +137,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
             return
         }
         
+        button.pulsator.start()
         button.soundPlayer?.currentTime = 0.0
         button.soundPlayer?.volume = 1.0
         button.soundPlayer?.play()
@@ -145,6 +153,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
             recorder.stop()
             currentButton?.soundPlayer?.stop()
             currentButton?.isSelected = false
+            currentButton?.pulsator.stop()
         }
         
         if currentButton === button {
@@ -154,6 +163,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
         
         button.isSelected = true
         button.soundPlayer?.prepareToPlay()
+        button.pulsator.start()
         recorder.record()
         timer = Timer.scheduledTimer(timeInterval: 0.075, target: self, selector: #selector(PitchViewController.updateMicInput), userInfo: nil, repeats: true)
         currentButton = button
@@ -211,6 +221,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
             let index = button.tag - 1
             
             button.setTitle(titleArray[index], for: [])
+            button.titleLabel?.font = blowOrTapControl.font
             
             // Accessibility
             button.accessibilityHint = "Plays a \(hintArray[index])"
@@ -237,7 +248,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
         }
     }
     
-    //MARK: Segmented Control
+    //MARK: Twicket Segmented Control Delegate
     
     /*@IBAction func tapOrBlow(_ sender: TwicketSegmentedControl) {
 
@@ -250,6 +261,16 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
         playMode = sender.selectedSegmentIndex == 0 ? PlayMode.blow : PlayMode.tap
     
     }*/
+    
+    func didSelect(_ segmentIndex: Int) {
+        timer.invalidate()
+        recorder.stop()
+        currentButton?.soundPlayer?.stop()
+        currentButton?.isSelected = false
+        currentButton = nil
+        
+        playMode = segmentIndex == 0 ? PlayMode.blow : PlayMode.tap
+    }
     
     
 

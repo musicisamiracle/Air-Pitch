@@ -26,6 +26,8 @@
 	<string>Main</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Access to the microphone allows you to blow into it for your desired pitch</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<true/>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
