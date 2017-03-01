@@ -12,7 +12,8 @@ import ChameleonFramework
 import Pulsator
 import TwicketSegmentedControl
 
-/*TODO: record a new B natural
+/*TODO: add pulsator to buttons
+        record a new B natural
         make an info view controller
         make background to buttons to show selection
         change/delete all print statements
@@ -48,8 +49,6 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate {
         view.backgroundColor = UIColor(gradientStyle: .topToBottom, withFrame: view.frame, andColors: [UIColor.flatRedDark, UIColor.flatSand])
 
         blowOrTapControl.setSegmentItems(["Blow", "Tap"])
-        //This line is not working
-        blowOrTapControl.defaultTextColor = .flatBlackDark
         blowOrTapControl.sliderBackgroundColor = .flatBlackDark
         blowOrTapControl.backgroundColor = .clear
         

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+//TODO: Not sure I need this anymore
 @IBDesignable class GradientView: UIView {
     @IBInspectable var topColor: UIColor = UIColor.white {
         didSet {

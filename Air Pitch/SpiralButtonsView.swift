@@ -81,7 +81,8 @@ import UIKit
         buttons.removeAll()
 
         
-        
+        let bundle = Bundle(for: SpiralButtonsView.self)
+        let buttonImage = UIImage(named: "button", in: bundle, compatibleWith: self.traitCollection)
         
         for index in 0..<numOfButtons {
             
@@ -91,6 +92,7 @@ import UIKit
             button.frame.size = buttonSize
             button.setTitle("test\(button.tag)", for: [])
             button.titleLabel?.adjustsFontSizeToFitWidth = true
+            button.setBackgroundImage(buttonImage, for: [])
 
             button.layer.masksToBounds = false
             button.layer.shadowColor = UIColor.darkGray.cgColor
