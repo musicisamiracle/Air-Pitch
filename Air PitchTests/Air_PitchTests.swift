@@ -35,17 +35,6 @@ class Air_PitchTests: XCTestCase {
         XCTAssertNotNil(button)
         
     }
-
-    
-  //MARK: Gradient View
-    func testGradientViewLayoutSubviews() {
-        let gradientView = GradientView()
-        gradientView.layoutSubviews()
-        
-        XCTAssertNotNil((gradientView.layer as? CAGradientLayer)?.colors, "There are not colors for the gradient")
-        XCTAssertNotNil((gradientView.layer as? CAGradientLayer)?.locations, "There are no locations for the gradient")
-        
-    }
     
     //MARK: Spiral Button View
     func testCreateButtons() {

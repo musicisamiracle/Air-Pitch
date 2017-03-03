@@ -85,7 +85,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
             try audioSession.setActive(true)
         }
         catch {
-
+            //TODO: error handling
         }
         
         // This file saves the recording, which does not get used again. It is necessary to create an AVAudioRecorder
