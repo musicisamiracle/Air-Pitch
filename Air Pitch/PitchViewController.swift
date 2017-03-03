@@ -21,7 +21,7 @@ import TwicketSegmentedControl
 
 class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegmentedControlDelegate {
     
-    //MARK: Properties
+    //MARK: - Properties
     
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var spiralButtonsView: SpiralButtonsView!
@@ -32,7 +32,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     var recorder: AVAudioRecorder!
     var timer = Timer()
     let soundArray = ["CLow", "DFlat", "DNatural", "EFlat", "ENatural", "FNatural", "GFlat", "GNatural", "AFlat", "ANatural", "BFlat", "BNatural", "CHigh"]
-    let titleArray = ["C Low", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B", "C High"]
+    let titleArray = ["C\nLow", "C#/\nDb", "D", "D#/\nEb", "E", "F", "F#/\nGb", "G", "G#/\nAb", "A", "A#/\nBb", "B", "C\nHigh"]
     let hintArray = ["Low C", "C Sharp or D Flat", "D", "D Sharp or E Flat", "E", "F", "F Sharp or G Flat", "G",
                      "G Sharp or A Flat", "A", "A Sharp or B Flat", "B", "High C"]
     var currentButton: PlayerButton?
@@ -113,7 +113,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         
     }
     
-    //MARK: Actions
+    //MARK: - Actions
     
     func playPitchFile(_ sender: PlayerButton) {
 
@@ -199,7 +199,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         }
     }
     
-    //MARK: AVAudioPlayerDelegate
+    //MARK: - AVAudioPlayerDelegate
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
         
@@ -213,7 +213,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         print(error.debugDescription)
     }
     
-    //MARK: Private Methods
+    //MARK: - Private Methods
     
 
     private func createSoundButtons() {
@@ -223,7 +223,8 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
             let index = button.tag - 1
             
             button.setTitle(titleArray[index], for: [])
-            button.titleLabel?.font = UIFont(name: "AirAmericana", size: 17)
+            button.titleLabel?.font = UIFont(name: "AmericanTypewriter", size: 15)
+            button.titleLabel?.numberOfLines = 0
             
             // Accessibility
             button.accessibilityHint = "Plays a \(hintArray[index])"
@@ -250,7 +251,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         }
     }
     
-    //MARK: Twicket Segmented Control Delegate
+    //MARK: - Twicket Segmented Control Delegate
     
     func didSelect(_ segmentIndex: Int) {
         timer.invalidate()
