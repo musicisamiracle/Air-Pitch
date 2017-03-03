@@ -12,17 +12,16 @@ import ChameleonFramework
 import Pulsator
 import TwicketSegmentedControl
 
-/*TODO: adjust navBar title
-        consider a highlight visual change for buttons
+/*TODO: error handling
         record a new B natural
         make an info view controller
-        change/delete all print statements
         app icons*/
 
 class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegmentedControlDelegate {
     
     //MARK: - Properties
     
+    @IBOutlet weak var stackViewContainer: UIView!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var spiralButtonsView: SpiralButtonsView!
 
@@ -48,7 +47,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         super.viewDidLoad()
         
         setStatusBarStyle(.lightContent)
-        view.backgroundColor = UIColor(gradientStyle: .topToBottom, withFrame: view.frame, andColors: [UIColor.flatRedDark, UIColor.flatSand])
+        stackViewContainer.backgroundColor = UIColor(gradientStyle: .topToBottom, withFrame: view.frame, andColors: [UIColor.flatRedDark, UIColor.flatSand])
         
         navBar.barTintColor = .flatBlackDark
         navBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "AirAmericana", size: 17)!, NSForegroundColorAttributeName: UIColor.flatWhite]
@@ -72,7 +71,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         audioSession.requestRecordPermission { (allowed) in
             if allowed {
                 //TODO: Change this to show an alert to allow recording in settings
-                print("recording allowed")
+
             }
         }
         
@@ -85,8 +84,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
             try audioSession.setActive(true)
         }
         catch {
-            print("could not activate session")
-            print(error.localizedDescription)
+
         }
         
         // This file saves the recording, which does not get used again. It is necessary to create an AVAudioRecorder
@@ -104,7 +102,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
             appDelegate.microphoneRecorder = recorder
         }
         catch {
-            print("could not initialize recorder.")
+            //TODO: error handling
         }
         
         recorder.prepareToRecord()
@@ -184,11 +182,8 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         let volume = volumeAdjustment <= 0 ? (1 + volumeAdjustment) : 1.0
         
         if power >= -13 {
-            
-            print("sound is happening at \(power)")
             // Fade duration matches length of timer before repeating
             currentButton?.soundPlayer?.setVolume(volume, fadeDuration: 0.075)
-            print(currentButton?.soundPlayer?.volume.debugDescription ?? "no volume")
             currentButton?.soundPlayer?.play()
             
         }
@@ -202,15 +197,11 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     //MARK: - AVAudioPlayerDelegate
     
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        
         currentButton?.isSelected = false
-        
-        print("sound finished")
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
         //TODO: Create an alert
-        print(error.debugDescription)
     }
     
     //MARK: - Private Methods
@@ -232,7 +223,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
             
             let soundName = soundArray[index]
             guard let filePath = Bundle.main.path(forResource: "\(soundName)", ofType: "m4a", inDirectory: "Audio Files") else {
-                print("Could not find audio file")
+                //TODO: error handling
                 return
             }
             let url = URL(fileURLWithPath: filePath)
@@ -243,7 +234,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
                 button.soundPlayer = player
             }
             catch {
-                print("Could not create player for \(soundName)")
+                //TODO: error handling
             }
             
             button.addTarget(self, action: #selector(PitchViewController.playPitchFile(_:)), for: .touchUpInside)
