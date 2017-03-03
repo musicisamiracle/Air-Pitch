@@ -14,7 +14,6 @@ import TwicketSegmentedControl
 
 /*TODO: error handling
         record a new B natural
-        make an info view controller
         app icons*/
 
 class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegmentedControlDelegate {
@@ -26,6 +25,8 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     @IBOutlet weak var spiralButtonsView: SpiralButtonsView!
 
     @IBOutlet weak var blowOrTapControl: TwicketSegmentedControl!
+    
+    @IBOutlet weak var infoOverlay: UIView!
     
     var audioSession: AVAudioSession!
     var recorder: AVAudioRecorder!
@@ -113,6 +114,13 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     
     //MARK: - Actions
     
+    @IBAction func infoButton(_ sender: UIButton) {
+        infoOverlay.isHidden = false
+    }
+    
+    @IBAction func dismissButton(_ sender: UIButton) {
+        infoOverlay.isHidden = true
+    }
     func playPitchFile(_ sender: PlayerButton) {
 
         

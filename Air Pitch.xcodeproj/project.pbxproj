@@ -19,8 +19,6 @@
 		AB43E85B1E461A050071BC4E /* Air_PitchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E85A1E461A050071BC4E /* Air_PitchUITests.swift */; };
 		AB43E8831E461F080071BC4E /* PitchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E83C1E461A050071BC4E /* PitchViewController.swift */; };
 		AB5B52AC1E5DF9EE00237A04 /* SpiralButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B52AB1E5DF9EE00237A04 /* SpiralButtonsView.swift */; };
-		AB5B52AF1E5E47DC00237A04 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B52AE1E5E47DC00237A04 /* GradientView.swift */; };
-		AB5B52B11E60909D00237A04 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B52B01E60909D00237A04 /* InfoViewController.swift */; };
 		AB7643691E4A9E1F003E22E8 /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */; };
 		ABF6D1FE1E67709200295495 /* AirAmericana.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABF6D1FD1E67709200295495 /* AirAmericana.ttf */; };
 		AE7891CB4D88FCC12E838FA1 /* Pods_Air_PitchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 266B6E67BEBCC1628CCB4DBF /* Pods_Air_PitchTests.framework */; };
@@ -66,8 +64,6 @@
 		AB43E85A1E461A050071BC4E /* Air_PitchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Air_PitchUITests.swift; sourceTree = "<group>"; };
 		AB43E85C1E461A050071BC4E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB5B52AB1E5DF9EE00237A04 /* SpiralButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpiralButtonsView.swift; sourceTree = "<group>"; };
-		AB5B52AE1E5E47DC00237A04 /* GradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
-		AB5B52B01E60909D00237A04 /* InfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 		ABF6D1FD1E67709200295495 /* AirAmericana.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirAmericana.ttf; sourceTree = "<group>"; };
 		B28C9D32569C0329DA2E2CD6 /* Pods-Air Pitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air Pitch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Air Pitch/Pods-Air Pitch.debug.xcconfig"; sourceTree = "<group>"; };
@@ -176,7 +172,6 @@
 			children = (
 				AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */,
 				AB5B52AB1E5DF9EE00237A04 /* SpiralButtonsView.swift */,
-				AB5B52AE1E5E47DC00237A04 /* GradientView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -185,7 +180,6 @@
 			isa = PBXGroup;
 			children = (
 				AB43E83C1E461A050071BC4E /* PitchViewController.swift */,
-				AB5B52B01E60909D00237A04 /* InfoViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -491,9 +485,7 @@
 			files = (
 				AB7643691E4A9E1F003E22E8 /* PlayerButton.swift in Sources */,
 				AB5B52AC1E5DF9EE00237A04 /* SpiralButtonsView.swift in Sources */,
-				AB5B52AF1E5E47DC00237A04 /* GradientView.swift in Sources */,
 				AB43E83B1E461A050071BC4E /* AppDelegate.swift in Sources */,
-				AB5B52B11E60909D00237A04 /* InfoViewController.swift in Sources */,
 				AB43E8831E461F080071BC4E /* PitchViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

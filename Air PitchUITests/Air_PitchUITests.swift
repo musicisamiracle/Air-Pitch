@@ -33,7 +33,7 @@ class Air_PitchUITests: XCTestCase {
 
     func testTapOrBlow() {
         let blowButton = app.buttons["Blow"]
-        let tapButton = app.buttons["Tap"]
+        //let tapButton = app.buttons["Tap"]
         XCTAssertNotNil(blowButton, "could not locate segmented control")
 
         //TODO: Not sure what to do with these
