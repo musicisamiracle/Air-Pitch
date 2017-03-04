@@ -42,10 +42,10 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        audioSession = (UIApplication.shared.delegate as! AppDelegate).audioSession
         
-        finishSetttingUpView()
+        finishSettingUpView()
         createSoundButtons()
-        setUpAudioSession()
         setUpAudioRecorder()
     }
     
@@ -168,7 +168,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     
     //MARK: - Private Methods
     
-    private func finishSetttingUpView() {
+    private func finishSettingUpView() {
         setStatusBarStyle(.lightContent)
         stackViewContainer.backgroundColor = UIColor(gradientStyle: .topToBottom, withFrame: view.frame, andColors: [UIColor.flatRedDark, UIColor.flatSand])
         
@@ -223,19 +223,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     
     private func setUpAudioSession() {
         // set up the audio session
-        audioSession = AVAudioSession.sharedInstance()
-
-        do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            //try audioSession.setMode(AVAudioSessionModeMeasurement)
-            try audioSession.overrideOutputAudioPort(.speaker)
-            try audioSession.setPreferredSampleRate(441000)
-            try audioSession.setPreferredIOBufferDuration(0.006)
-            try audioSession.setActive(true)
-        }
-        catch {
-            //TODO: error handling
-        }
+        
     }
     
     private func setUpAudioRecorder() {

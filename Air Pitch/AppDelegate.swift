@@ -16,10 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     // The recorder comes from PitchViewController
     var microphoneRecorder: AVAudioRecorder?
-
+    var audioSession: AVAudioSession!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        audioSession = AVAudioSession.sharedInstance()
+        
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try audioSession.overrideOutputAudioPort(.speaker)
+            try audioSession.setPreferredSampleRate(441000)
+            try audioSession.setPreferredIOBufferDuration(0.006)
+            try audioSession.setActive(true)
+        }
+        catch {
+            fatalError("Could not initiate the audio session")
+        }
         return true
     }
 
