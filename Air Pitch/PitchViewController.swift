@@ -12,7 +12,8 @@ import ChameleonFramework
 import Pulsator
 import TwicketSegmentedControl
 
-/*TODO: move some things out of viewDidLoad into functions
+/*TODO: deal with audio session
+        move some things out of viewDidLoad into functions
         error handling
         record a new B natural
         app icons*/
@@ -29,10 +30,10 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     
     var audioSession: AVAudioSession!
     var recorder: AVAudioRecorder!
-    var timer = Timer()
-    var currentButton: PlayerButton?
-    var playMode = PlayMode.blow
-    
+    private var timer = Timer()
+    private var currentButton: PlayerButton?
+    private var playMode = PlayMode.blow
+    private var microphoneAlert: UIAlertController!
     
     enum PlayMode {
         case tap
@@ -46,6 +47,23 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         createSoundButtons()
         setUpAudioSession()
         setUpAudioRecorder()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        microphoneAlert = UIAlertController(title: "Microphone Access", message: "In order to use the blow function of Air Pitch, go to Settings > Privacy > Microphone and allow Air Pitch to use the microphone.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { [unowned self] action in
+            // Go to tap mode
+            self.blowOrTapControl.move(to: 1)
+            self.blowOrTapControl.delegate?.didSelect(1)
+            self.microphoneAlert.dismiss(animated: true, completion: nil)
+        })
+        microphoneAlert.addAction(action)
+        
+        audioSession.requestRecordPermission { [unowned self] (allowed) in
+            if !allowed {
+                self.present(self.microphoneAlert, animated: true, completion: nil)
+            }
+        }
     }
     
     //MARK: - Actions
@@ -206,14 +224,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     private func setUpAudioSession() {
         // set up the audio session
         audioSession = AVAudioSession.sharedInstance()
-        
-        audioSession.requestRecordPermission { (allowed) in
-            if allowed {
-                //TODO: Change this to show an alert to allow recording in settings
-                
-            }
-        }
-        
+
         do {
             try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
             //try audioSession.setMode(AVAudioSessionModeMeasurement)
@@ -253,6 +264,12 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     //MARK: - Twicket Segmented Control Delegate
     
     func didSelect(_ segmentIndex: Int) {
+        if segmentIndex == 0 {
+            if audioSession.recordPermission() == .denied {
+                present(microphoneAlert, animated: true, completion: nil)
+            }
+        }
+        
         timer.invalidate()
         recorder.stop()
         currentButton?.soundPlayer?.stop()
