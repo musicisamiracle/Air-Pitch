@@ -12,7 +12,8 @@ import ChameleonFramework
 import Pulsator
 import TwicketSegmentedControl
 
-/*TODO: error handling
+/*TODO: move some things out of viewDidLoad into functions
+        error handling
         record a new B natural
         app icons*/
 
@@ -23,18 +24,12 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     @IBOutlet weak var stackViewContainer: UIView!
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var spiralButtonsView: SpiralButtonsView!
-
     @IBOutlet weak var blowOrTapControl: TwicketSegmentedControl!
-    
     @IBOutlet weak var infoOverlay: UIView!
     
     var audioSession: AVAudioSession!
     var recorder: AVAudioRecorder!
     var timer = Timer()
-    let soundArray = ["CLow", "DFlat", "DNatural", "EFlat", "ENatural", "FNatural", "GFlat", "GNatural", "AFlat", "ANatural", "BFlat", "BNatural", "CHigh"]
-    let titleArray = ["C\nLow", "C#/\nDb", "D", "D#/\nEb", "E", "F", "F#/\nGb", "G", "G#/\nAb", "A", "A#/\nBb", "B", "C\nHigh"]
-    let hintArray = ["Low C", "C Sharp or D Flat", "D", "D Sharp or E Flat", "E", "F", "F Sharp or G Flat", "G",
-                     "G Sharp or A Flat", "A", "A Sharp or B Flat", "B", "High C"]
     var currentButton: PlayerButton?
     var playMode = PlayMode.blow
     
@@ -47,69 +42,10 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setStatusBarStyle(.lightContent)
-        stackViewContainer.backgroundColor = UIColor(gradientStyle: .topToBottom, withFrame: view.frame, andColors: [UIColor.flatRedDark, UIColor.flatSand])
-        
-        navBar.barTintColor = .flatBlackDark
-        navBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "AirAmericana", size: 17)!, NSForegroundColorAttributeName: UIColor.flatWhite]
-
-        blowOrTapControl.setSegmentItems(["Blow", "Tap"])
-        blowOrTapControl.sliderBackgroundColor = .flatBlackDark
-        blowOrTapControl.defaultTextColor = .flatBlackDark
-        blowOrTapControl.font = UIFont(name: "AirAmericana", size: 15)!
-        blowOrTapControl.backgroundColor = .clear
-        blowOrTapControl.delegate = self
-
-        
-        
-        // create buttons in a spiral
+        finishSetttingUpView()
         createSoundButtons()
-        
-        
-        // set up the audio session
-        audioSession = AVAudioSession.sharedInstance()
-        
-        audioSession.requestRecordPermission { (allowed) in
-            if allowed {
-                //TODO: Change this to show an alert to allow recording in settings
-
-            }
-        }
-        
-        do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            //try audioSession.setMode(AVAudioSessionModeMeasurement)
-            try audioSession.overrideOutputAudioPort(.speaker)
-            try audioSession.setPreferredSampleRate(441000)
-            try audioSession.setPreferredIOBufferDuration(0.006)
-            try audioSession.setActive(true)
-        }
-        catch {
-            //TODO: error handling
-        }
-        
-        // This file saves the recording, which does not get used again. It is necessary to create an AVAudioRecorder
-        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-        let filePath = documentsDirectory.appendingPathComponent("micRecording.m4a")
-        
-        let microphoneRecordingSettings: [String : Any] = [AVFormatIDKey: kAudioFormatMPEG4AAC,
-                                                           AVSampleRateKey: 8000.0,
-                                                           AVNumberOfChannelsKey: 1,
-                                                           AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue]
-        
-        do {
-            try recorder = AVAudioRecorder(url: filePath, settings: microphoneRecordingSettings)
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.microphoneRecorder = recorder
-        }
-        catch {
-            //TODO: error handling
-        }
-        
-        recorder.prepareToRecord()
-        recorder.isMeteringEnabled = true
-        
-        
+        setUpAudioSession()
+        setUpAudioRecorder()
     }
     
     //MARK: - Actions
@@ -214,11 +150,28 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     
     //MARK: - Private Methods
     
-
+    private func finishSetttingUpView() {
+        setStatusBarStyle(.lightContent)
+        stackViewContainer.backgroundColor = UIColor(gradientStyle: .topToBottom, withFrame: view.frame, andColors: [UIColor.flatRedDark, UIColor.flatSand])
+        
+        navBar.barTintColor = .flatBlackDark
+        navBar.titleTextAttributes = [NSFontAttributeName: UIFont(name: "AirAmericana", size: 25)!, NSForegroundColorAttributeName: UIColor.flatWhite]
+        
+        blowOrTapControl.setSegmentItems(["Blow", "Tap"])
+        blowOrTapControl.sliderBackgroundColor = .flatBlackDark
+        blowOrTapControl.defaultTextColor = .flatBlackDark
+        blowOrTapControl.font = UIFont(name: "AirAmericana", size: 15)!
+        blowOrTapControl.backgroundColor = .clear
+        blowOrTapControl.delegate = self
+    }
+    
     private func createSoundButtons() {
+        let soundArray = ["CLow", "DFlat", "DNatural", "EFlat", "ENatural", "FNatural", "GFlat", "GNatural", "AFlat", "ANatural", "BFlat", "BNatural", "CHigh"]
+        let titleArray = ["C\nLow", "C#/\nDb", "D", "D#/\nEb", "E", "F", "F#/\nGb", "G", "G#/\nAb", "A", "A#/\nBb", "B", "C\nHigh"]
+        let hintArray = ["Low C", "C Sharp or D Flat", "D", "D Sharp or E Flat", "E", "F", "F Sharp or G Flat", "G",
+                         "G Sharp or A Flat", "A", "A Sharp or B Flat", "B", "High C"]
         
         for button in spiralButtonsView.buttons {
-            
             let index = button.tag - 1
             
             button.setTitle(titleArray[index], for: [])
@@ -250,26 +203,69 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         }
     }
     
+    private func setUpAudioSession() {
+        // set up the audio session
+        audioSession = AVAudioSession.sharedInstance()
+        
+        audioSession.requestRecordPermission { (allowed) in
+            if allowed {
+                //TODO: Change this to show an alert to allow recording in settings
+                
+            }
+        }
+        
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            //try audioSession.setMode(AVAudioSessionModeMeasurement)
+            try audioSession.overrideOutputAudioPort(.speaker)
+            try audioSession.setPreferredSampleRate(441000)
+            try audioSession.setPreferredIOBufferDuration(0.006)
+            try audioSession.setActive(true)
+        }
+        catch {
+            //TODO: error handling
+        }
+    }
+    
+    private func setUpAudioRecorder() {
+        // This file saves the recording, which does not get used again. It is necessary to create an AVAudioRecorder
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let filePath = documentsDirectory.appendingPathComponent("micRecording.m4a")
+        
+        let microphoneRecordingSettings: [String : Any] = [AVFormatIDKey: kAudioFormatMPEG4AAC,
+                                                           AVSampleRateKey: 8000.0,
+                                                           AVNumberOfChannelsKey: 1,
+                                                           AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue]
+        
+        do {
+            try recorder = AVAudioRecorder(url: filePath, settings: microphoneRecordingSettings)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.microphoneRecorder = recorder
+        }
+        catch {
+            //TODO: error handling
+        }
+        
+        recorder.prepareToRecord()
+        recorder.isMeteringEnabled = true
+    }
+    
     //MARK: - Twicket Segmented Control Delegate
     
     func didSelect(_ segmentIndex: Int) {
         timer.invalidate()
         recorder.stop()
         currentButton?.soundPlayer?.stop()
+        currentButton?.pulsator.stop()
         currentButton?.isSelected = false
         currentButton = nil
         
         playMode = segmentIndex == 0 ? PlayMode.blow : PlayMode.tap
     }
-    
-    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
         recorder.deleteRecording()
     }
-
-
 }
 
