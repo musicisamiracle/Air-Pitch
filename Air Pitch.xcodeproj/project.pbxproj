@@ -136,7 +136,6 @@
 		AB43E8391E461A050071BC4E /* Air Pitch */ = {
 			isa = PBXGroup;
 			children = (
-				ABF6D1FD1E67709200295495 /* AirAmericana.ttf */,
 				AB43E83A1E461A050071BC4E /* AppDelegate.swift */,
 				AB5B52B21E6090AA00237A04 /* View Controllers */,
 				AB43E83E1E461A050071BC4E /* Main.storyboard */,
@@ -144,6 +143,7 @@
 				AB43E8431E461A050071BC4E /* LaunchScreen.storyboard */,
 				AB5B52AD1E5E457C00237A04 /* Views */,
 				AB43E8461E461A050071BC4E /* Info.plist */,
+				ABF6D1FD1E67709200295495 /* AirAmericana.ttf */,
 				AB16922D1E567F910060F15A /* Audio Files */,
 			);
 			path = "Air Pitch";
