@@ -13,7 +13,6 @@ import Pulsator
 import TwicketSegmentedControl
 
 /*TODO: deal with audio session
-        move some things out of viewDidLoad into functions
         error handling
         record a new B natural
         app icons*/
@@ -58,6 +57,14 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
             self.microphoneAlert.dismiss(animated: true, completion: nil)
         })
         microphoneAlert.addAction(action)
+        
+        do {
+            try audioSession.setActive(true)
+        }
+        catch {
+            //TODO: error handling
+        }
+        
         
         audioSession.requestRecordPermission { [unowned self] (allowed) in
             if !allowed {

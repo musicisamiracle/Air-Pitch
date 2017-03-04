@@ -21,12 +21,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         audioSession = AVAudioSession.sharedInstance()
         
+        print(audioSession.inputDataSources)
+        print(audioSession.outputDataSources)
+        print(audioSession.inputDataSource)
+        print(audioSession.outputDataSource)
+        
         do {
             try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
             try audioSession.overrideOutputAudioPort(.speaker)
             try audioSession.setPreferredSampleRate(441000)
             try audioSession.setPreferredIOBufferDuration(0.006)
-            try audioSession.setActive(true)
         }
         catch {
             fatalError("Could not initiate the audio session")
