@@ -14,23 +14,19 @@ import AVFoundation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var microphoneRecorder: AVAudioRecorder!
-    var audioSession: AVAudioSession!
+    var microphoneRecorder: AVAudioRecorder?
+    var audioSession: AVAudioSession?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         audioSession = AVAudioSession.sharedInstance()
         
-        do {//TODO: Test that larger speaker is what is working
-            //try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
-            //try audioSession.overrideOutputAudioPort(.speaker)
-            try audioSession.setPreferredSampleRate(441000)
-            try audioSession.setPreferredIOBufferDuration(0.006)
+        do {
+            try audioSession?.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
+            try audioSession?.setPreferredSampleRate(441000)
+            try audioSession?.setPreferredIOBufferDuration(0.006)
         }
         catch {
-            //TODO: error handling test it
-            let alert = UIAlertController(title: "Audio Session Failure", message: "An audio session could not be initalized. Please terminate the app and try to open again.", preferredStyle: .alert)
-            window?.rootViewController?.present(alert, animated: true, completion: nil)
+            // If the audio session does not get initialized, an alert shows after PitchViewController is created.
         }
         // This file saves the recording, which does not get used again. It is necessary to create an AVAudioRecorder
         let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -45,13 +41,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try microphoneRecorder = AVAudioRecorder(url: filePath, settings: microphoneRecordingSettings)
         }
         catch {
-            //TODO: error handling test it
-            let alert = UIAlertController(title: "Microphone failure", message: "Using the blow function of the app will not work due to an unknown problem.", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: { action in
-                alert.dismiss(animated: true, completion: nil)
-            })
-            alert.addAction(action)
-            window?.rootViewController?.present(alert, animated: true, completion: nil)
+            // If the audio recorder does not get initialized, an alert shows after PitchViewController is created.
+            
         }
         return true
     }
@@ -59,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         
         // The recorder file is not needed, so it can be deleted everytime the app goes inactive.
-        microphoneRecorder.deleteRecording()
+        microphoneRecorder?.deleteRecording()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -73,8 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         
-        microphoneRecorder.prepareToRecord()
-        microphoneRecorder.isMeteringEnabled = true
+        microphoneRecorder?.prepareToRecord()
+        microphoneRecorder?.isMeteringEnabled = true
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

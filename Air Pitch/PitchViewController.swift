@@ -27,12 +27,13 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     @IBOutlet weak var blowOrTapControl: TwicketSegmentedControl!
     @IBOutlet weak var infoOverlay: UIView!
     
-    var audioSession: AVAudioSession!
-    var recorder: AVAudioRecorder!
+    private var audioSession: AVAudioSession?
+    private var recorder: AVAudioRecorder?
     private var timer = Timer()
     private var currentButton: PlayerButton?
     private var playMode = PlayMode.blow
     private var microphoneAlert: UIAlertController!
+    private var alerts = [UIAlertController]()
     
     enum PlayMode {
         case tap
@@ -45,15 +46,6 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         finishSettingUpView()
         createSoundButtons()
         
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        audioSession = appDelegate.audioSession
-
-        recorder = appDelegate.microphoneRecorder
-        recorder.prepareToRecord()
-        recorder.isMeteringEnabled = true
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
         microphoneAlert = UIAlertController(title: "Microphone Access", message: "In order to use the blow function of Air Pitch, go to Settings > Privacy > Microphone and allow Air Pitch to use the microphone.", preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { [unowned self] action in
             // Go to tap mode
@@ -63,18 +55,62 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         })
         microphoneAlert.addAction(action)
         
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        audioSession = appDelegate.audioSession
+
+        recorder = appDelegate.microphoneRecorder
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
         do {
-            try audioSession.setActive(true)
+            try audioSession?.setActive(true)
         }
         catch {
-            //TODO: error handling
+            
+            let alert = UIAlertController(title: "Audio Session Failure", message: "An audio session could not be initalized. Please terminate the app and try to open again.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: { action in
+                self.alerts.remove(at: 0)
+                self.showAlerts()
+            })
+            alert.addAction(action)
+            alerts.append(alert)
+            
+            
         }
         
-        
-        audioSession.requestRecordPermission { [unowned self] (allowed) in
+        if let recorder = recorder {
+            recorder.prepareToRecord()
+            recorder.isMeteringEnabled = true
+        }
+        else {
+            
+            let alert = UIAlertController(title: "Microphone failure", message: "Using the blow function of the app will not work due to an unknown problem.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: { action in
+                self.alerts.remove(at: 0)
+                self.showAlerts()
+            })
+            alert.addAction(action)
+            
+            alerts.append(alert)
+            
+        }
+      
+        audioSession?.requestRecordPermission { [unowned self] (allowed) in
             if !allowed {
-                self.present(self.microphoneAlert, animated: true, completion: nil)
+                
+                self.alerts.append(self.microphoneAlert)
+                
             }
+        }
+        
+        showAlerts()
+    }
+    
+    private func showAlerts() {
+        if let alert = alerts.first {
+            present(alert, animated: true, completion: nil)
         }
     }
     
@@ -98,7 +134,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         }
     }
     
-    func playInTapMode(button: PlayerButton) {
+    private func playInTapMode(button: PlayerButton) {
         
         currentButton?.soundPlayer?.stop()
         currentButton?.isSelected = false
@@ -118,12 +154,12 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         currentButton = button
     }
     
-    func playInBlowMode(button: PlayerButton) {
+    private func playInBlowMode(button: PlayerButton) {
         
         
         if timer.isValid {
             timer.invalidate()
-            recorder.stop()
+            recorder?.stop()
             currentButton?.soundPlayer?.stop()
             currentButton?.isSelected = false
             currentButton?.pulsator.stop()
@@ -137,14 +173,17 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         button.isSelected = true
         button.soundPlayer?.prepareToPlay()
         button.pulsator.start()
-        recorder.record()
+        recorder?.record()
         timer = Timer.scheduledTimer(timeInterval: 0.075, target: self, selector: #selector(PitchViewController.updateMicInput), userInfo: nil, repeats: true)
         currentButton = button
    
     }
     
     func updateMicInput() {
-        
+        guard let recorder = recorder else {
+            //TODO: Error handling
+            return
+        }
         recorder.updateMeters()
         
         let power = recorder.averagePower(forChannel: 0)
@@ -178,7 +217,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         //TODO: Create an alert
     }
     
-    //MARK: - Private Methods
+    //MARK: - View Setup
     
     private func finishSettingUpView() {
         setStatusBarStyle(.lightContent)
@@ -237,13 +276,13 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     
     func didSelect(_ segmentIndex: Int) {
         if segmentIndex == 0 {
-            if audioSession.recordPermission() == .denied {
+            if audioSession?.recordPermission() == .denied {
                 present(microphoneAlert, animated: true, completion: nil)
             }
         }
         
         timer.invalidate()
-        recorder.stop()
+        recorder?.stop()
         currentButton?.soundPlayer?.stop()
         currentButton?.pulsator.stop()
         currentButton?.isSelected = false
@@ -254,7 +293,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        recorder.deleteRecording()
+        recorder?.deleteRecording()
     }
 }
 
