@@ -70,11 +70,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         catch {
             
             let alert = UIAlertController(title: "Audio Session Failure", message: "An audio session could not be initalized. Please terminate the app and try to open again.", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: { action in
-                self.alerts.remove(at: 0)
-                self.showAlerts()
-            })
-            alert.addAction(action)
+
             alerts.append(alert)
             
             
@@ -87,11 +83,6 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         else {
             
             let alert = UIAlertController(title: "Microphone failure", message: "Using the blow function of the app will not work due to an unknown problem.", preferredStyle: .alert)
-            let action = UIAlertAction(title: "OK", style: .default, handler: { action in
-                self.alerts.remove(at: 0)
-                self.showAlerts()
-            })
-            alert.addAction(action)
             
             alerts.append(alert)
             
@@ -110,6 +101,14 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     
     private func showAlerts() {
         if let alert = alerts.first {
+            if alert !== microphoneAlert {
+                let action = UIAlertAction(title: "OK", style: .default, handler: { action in
+                    self.alerts.remove(at: 0)
+                    self.showAlerts()
+                })
+                alert.addAction(action)
+            }
+            
             present(alert, animated: true, completion: nil)
         }
     }
@@ -235,7 +234,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     }
     
     private func createSoundButtons() {
-        let soundArray = ["CLow", "DFlat", "DNatural", "EFlat", "ENatural", "FNatural", "GFlat", "GNatural", "AFlat", "ANatural", "BFlat", "BNatural", "CHigh"]
+        let soundArray = ["CLowB", "DFlat", "DNatural", "EFlat", "ENatural", "FNatural", "GFlat", "GNatural", "AFlat", "ANatural", "BFlat", "BNatural", "CHigh"]
         let titleArray = ["C\nLow", "C#/\nDb", "D", "D#/\nEb", "E", "F", "F#/\nGb", "G", "G#/\nAb", "A", "A#/\nBb", "B", "C\nHigh"]
         let hintArray = ["Low C", "C Sharp or D Flat", "D", "D Sharp or E Flat", "E", "F", "F Sharp or G Flat", "G",
                          "G Sharp or A Flat", "A", "A Sharp or B Flat", "B", "High C"]
@@ -252,23 +251,26 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
             button.accessibilityLabel = hintArray[index]
             
             let soundName = soundArray[index]
-            guard let filePath = Bundle.main.path(forResource: "\(soundName)", ofType: "m4a", inDirectory: "Audio Files") else {
-                //TODO: error handling
-                return
+            if let filePath = Bundle.main.path(forResource: "\(soundName)", ofType: "m4a", inDirectory: "Audio Files") {
+
+                let url = URL(fileURLWithPath: filePath)
+                
+                do {
+                    let player = try AVAudioPlayer(contentsOf: url)
+                    player.delegate = self
+                    button.soundPlayer = player
+                }
+                catch {
+                    let alert = UIAlertController(title: "Audio File Error", message: "Unable to prepare \(soundName) to play", preferredStyle: .alert)
+                    alerts.append(alert)
+                }
+                
+                button.addTarget(self, action: #selector(PitchViewController.playPitchFile(_:)), for: .touchUpInside)
             }
-            let url = URL(fileURLWithPath: filePath)
-            
-            do {
-                let player = try AVAudioPlayer(contentsOf: url)
-                player.delegate = self
-                button.soundPlayer = player
+            else {
+                let alert = UIAlertController(title: "Audio File Not Found", message: "Unable to locate \(soundName)", preferredStyle: .alert)
+                alerts.append(alert)
             }
-            catch {
-                //TODO: error handling
-            }
-            
-            button.addTarget(self, action: #selector(PitchViewController.playPitchFile(_:)), for: .touchUpInside)
-            
         }
     }
 
