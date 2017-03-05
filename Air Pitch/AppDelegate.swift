@@ -28,8 +28,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try audioSession.setPreferredIOBufferDuration(0.006)
         }
         catch {
-            //TODO: error handling
-            fatalError("Could not initiate the audio session")
+            //TODO: error handling test it
+            let alert = UIAlertController(title: "Audio Session Failure", message: "An audio session could not be initalized. Please terminate the app and try to open again.", preferredStyle: .alert)
+            window?.rootViewController?.present(alert, animated: true, completion: nil)
         }
         // This file saves the recording, which does not get used again. It is necessary to create an AVAudioRecorder
         let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
@@ -44,8 +45,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             try microphoneRecorder = AVAudioRecorder(url: filePath, settings: microphoneRecordingSettings)
         }
         catch {
-            //TODO: error handling 
-            fatalError("Could not initiate audio recorder")
+            //TODO: error handling test it
+            let alert = UIAlertController(title: "Microphone failure", message: "Using the blow function of the app will not work due to an unknown problem.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: { action in
+                alert.dismiss(animated: true, completion: nil)
+            })
+            alert.addAction(action)
+            window?.rootViewController?.present(alert, animated: true, completion: nil)
         }
         return true
     }
