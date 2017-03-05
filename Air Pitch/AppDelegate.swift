@@ -14,26 +14,38 @@ import AVFoundation
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    // The recorder comes from PitchViewController
-    var microphoneRecorder: AVAudioRecorder?
+    var microphoneRecorder: AVAudioRecorder!
     var audioSession: AVAudioSession!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         audioSession = AVAudioSession.sharedInstance()
         
-        print(audioSession.inputDataSources)
-        print(audioSession.outputDataSources)
-        print(audioSession.inputDataSource)
-        print(audioSession.outputDataSource)
-        
-        do {
-            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
-            try audioSession.overrideOutputAudioPort(.speaker)
+        do {//TODO: Test that larger speaker is what is working
+            //try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord)
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
+            //try audioSession.overrideOutputAudioPort(.speaker)
             try audioSession.setPreferredSampleRate(441000)
             try audioSession.setPreferredIOBufferDuration(0.006)
         }
         catch {
+            //TODO: error handling
             fatalError("Could not initiate the audio session")
+        }
+        // This file saves the recording, which does not get used again. It is necessary to create an AVAudioRecorder
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let filePath = documentsDirectory.appendingPathComponent("micRecording.m4a")
+        
+        let microphoneRecordingSettings: [String : Any] = [AVFormatIDKey: kAudioFormatMPEG4AAC,
+                                                           AVSampleRateKey: 8000.0,
+                                                           AVNumberOfChannelsKey: 1,
+                                                           AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue]
+        
+        do {
+            try microphoneRecorder = AVAudioRecorder(url: filePath, settings: microphoneRecordingSettings)
+        }
+        catch {
+            //TODO: error handling 
+            fatalError("Could not initiate audio recorder")
         }
         return true
     }
@@ -41,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         
         // The recorder file is not needed, so it can be deleted everytime the app goes inactive.
-        microphoneRecorder?.deleteRecording()
+        microphoneRecorder.deleteRecording()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -55,8 +67,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidBecomeActive(_ application: UIApplication) {
         
-        microphoneRecorder?.prepareToRecord()
-        microphoneRecorder?.isMeteringEnabled = true
+        microphoneRecorder.prepareToRecord()
+        microphoneRecorder.isMeteringEnabled = true
     }
 
     func applicationWillTerminate(_ application: UIApplication) {

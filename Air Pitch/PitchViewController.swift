@@ -41,11 +41,16 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        audioSession = (UIApplication.shared.delegate as! AppDelegate).audioSession
         
         finishSettingUpView()
         createSoundButtons()
-        setUpAudioRecorder()
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        audioSession = appDelegate.audioSession
+
+        recorder = appDelegate.microphoneRecorder
+        recorder.prepareToRecord()
+        recorder.isMeteringEnabled = true
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -227,35 +232,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
             
         }
     }
-    
-    private func setUpAudioSession() {
-        // set up the audio session
-        
-    }
-    
-    private func setUpAudioRecorder() {
-        // This file saves the recording, which does not get used again. It is necessary to create an AVAudioRecorder
-        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-        let filePath = documentsDirectory.appendingPathComponent("micRecording.m4a")
-        
-        let microphoneRecordingSettings: [String : Any] = [AVFormatIDKey: kAudioFormatMPEG4AAC,
-                                                           AVSampleRateKey: 8000.0,
-                                                           AVNumberOfChannelsKey: 1,
-                                                           AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue]
-        
-        do {
-            try recorder = AVAudioRecorder(url: filePath, settings: microphoneRecordingSettings)
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.microphoneRecorder = recorder
-        }
-        catch {
-            //TODO: error handling
-        }
-        
-        recorder.prepareToRecord()
-        recorder.isMeteringEnabled = true
-    }
-    
+
     //MARK: - Twicket Segmented Control Delegate
     
     func didSelect(_ segmentIndex: Int) {
