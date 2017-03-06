@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
         let filePath = documentsDirectory.appendingPathComponent("micRecording.m4a")
         
-        let microphoneRecordingSettings: [String : Any] = [AVFormatIDKey: "kAudioFormatMPEG4AAC",
+        let microphoneRecordingSettings: [String : Any] = [AVFormatIDKey: kAudioFormatMPEG4AAC,
                                                            AVSampleRateKey: 8000.0,
                                                            AVNumberOfChannelsKey: 1,
                                                            AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue]

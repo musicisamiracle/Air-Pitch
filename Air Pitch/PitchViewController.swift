@@ -15,7 +15,8 @@ import TwicketSegmentedControl
 /*TODO: deal with audio session
         error handling
         cut and insert a new B natural
-        app icons*/
+        app icons
+        remove whitespace*/
 
 class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegmentedControlDelegate {
     
@@ -122,6 +123,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     @IBAction func dismissButton(_ sender: UIButton) {
         infoOverlay.isHidden = true
     }
+    
     func playPitchFile(_ sender: PlayerButton) {
 
         
@@ -135,9 +137,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     
     private func playInTapMode(button: PlayerButton) {
         
-        currentButton?.soundPlayer?.stop()
-        currentButton?.isSelected = false
-        currentButton?.pulsator.stop()
+        stopCurrentButton()
         
         // When the user selects button that is currently playing, sound stops and button is de-selected
         if currentButton === button {
@@ -159,9 +159,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         if timer.isValid {
             timer.invalidate()
             recorder?.stop()
-            currentButton?.soundPlayer?.stop()
-            currentButton?.isSelected = false
-            currentButton?.pulsator.stop()
+            stopCurrentButton()
         }
         
         if currentButton === button {
@@ -187,8 +185,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     func updateMicInput() {
         guard let recorder = recorder else {
             timer.invalidate()
-            currentButton?.pulsator.stop()
-            currentButton?.isSelected = false
+            stopCurrentButton()
             let alert = UIAlertController(title: "Microphone Error", message: "Air Pitch cannot access the microphone for an unknown reason", preferredStyle: .alert)
             let action = UIAlertAction(title: "OK", style: .default, handler: nil)
             alert.addAction(action)
@@ -225,7 +222,11 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
-        //TODO: Create an alert
+        stopCurrentButton()
+        let alert = UIAlertController(title: "Decode Error", message: "There was an error decoding the audio file\n\(error?.localizedDescription)", preferredStyle: .actionSheet)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
     }
     
     //MARK: - View Setup

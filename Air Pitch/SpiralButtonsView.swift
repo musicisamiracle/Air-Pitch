@@ -65,12 +65,14 @@ import UIKit
         }
     }
     
-    func setUpView() {
+    //MARK: - Methods
+    
+    private func setUpView() {
         backgroundColor = UIColor.clear
     }
 
         
-    func createButtons() {
+    private func createButtons() {
         
         // remove current buttons
         
