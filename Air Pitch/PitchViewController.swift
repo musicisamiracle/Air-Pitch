@@ -14,7 +14,7 @@ import TwicketSegmentedControl
 
 /*TODO: deal with audio session
         error handling
-        record a new B natural
+        cut and insert a new B natural
         app icons*/
 
 class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegmentedControlDelegate {
@@ -178,9 +178,21 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
    
     }
     
+    private func stopCurrentButton() {
+        currentButton?.soundPlayer?.stop()
+        currentButton?.pulsator.stop()
+        currentButton?.isSelected = false
+    }
+    
     func updateMicInput() {
         guard let recorder = recorder else {
-            //TODO: Error handling
+            timer.invalidate()
+            currentButton?.pulsator.stop()
+            currentButton?.isSelected = false
+            let alert = UIAlertController(title: "Microphone Error", message: "Air Pitch cannot access the microphone for an unknown reason", preferredStyle: .alert)
+            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alert.addAction(action)
+            present(alert, animated: true, completion: nil)
             return
         }
         recorder.updateMeters()
@@ -234,7 +246,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     }
     
     private func createSoundButtons() {
-        let soundArray = ["CLowB", "DFlat", "DNatural", "EFlat", "ENatural", "FNatural", "GFlat", "GNatural", "AFlat", "ANatural", "BFlat", "BNatural", "CHigh"]
+        let soundArray = ["CLow", "DFlat", "DNatural", "EFlat", "ENatural", "FNatural", "GFlat", "GNatural", "AFlat", "ANatural", "BFlat", "BNatural", "CHigh"]
         let titleArray = ["C\nLow", "C#/\nDb", "D", "D#/\nEb", "E", "F", "F#/\nGb", "G", "G#/\nAb", "A", "A#/\nBb", "B", "C\nHigh"]
         let hintArray = ["Low C", "C Sharp or D Flat", "D", "D Sharp or E Flat", "E", "F", "F Sharp or G Flat", "G",
                          "G Sharp or A Flat", "A", "A Sharp or B Flat", "B", "High C"]
