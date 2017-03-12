@@ -24,7 +24,6 @@ class PlayerButton: UIButton {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         addPulseLayer()
-        
     }
     override func layoutSubviews() {
         super.layoutSubviews()
