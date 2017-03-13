@@ -12,8 +12,7 @@ import ChameleonFramework
 import Pulsator
 import TwicketSegmentedControl
 
-/*TODO: app icons
-        remove whitespace*/
+/*TODO: app icons*/
 
 class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegmentedControlDelegate {
     
