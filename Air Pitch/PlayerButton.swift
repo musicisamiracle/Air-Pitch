@@ -6,7 +6,6 @@
 //  Copyright © 2017 Dane Thomas. All rights reserved.
 //
 
-/*TODO: make it conform to NSCoder*/
 import UIKit
 import AVFoundation
 import Pulsator
