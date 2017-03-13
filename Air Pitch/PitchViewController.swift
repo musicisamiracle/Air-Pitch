@@ -204,6 +204,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         blowOrTapControl.font = UIFont(name: "AirAmericana", size: 15)!
         blowOrTapControl.backgroundColor = .clear
         blowOrTapControl.delegate = self
+        blowOrTapControl.accessibilityLabel = "blowOrTap"
     }
     
     private func createSoundButtons() {

@@ -22,7 +22,6 @@ class Air_PitchUITests: XCTestCase {
         continueAfterFailure = false
         // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
         app.launch()
-
         // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
     }
     
@@ -32,12 +31,25 @@ class Air_PitchUITests: XCTestCase {
     }
 
     func testTapOrBlow() {
-        let blowButton = app.buttons["Blow"]
-        //let tapButton = app.buttons["Tap"]
-        XCTAssertNotNil(blowButton, "could not locate segmented control")
-
-        //TODO: Not sure what to do with these
+        let blowOrTap = app.otherElements["blowOrTap"]
+        let lowC = app.buttons["Low C"]
+        lowC.tap()
+        XCTAssert(lowC.isSelected)
+        lowC.tap()
         
+        blowOrTap.swipeRight()
         
+        lowC.tap()
+        XCTAssert(lowC.isSelected)
+        lowC.tap()
+    }
+    
+    func testInfoAndDismiss() {
+        let info = app.buttons["info"]
+        let dismiss = app.buttons["dismiss"]
+        
+        info.tap()
+        
+        dismiss.tap()
     }
 }
