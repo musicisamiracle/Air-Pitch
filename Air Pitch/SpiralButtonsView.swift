@@ -80,6 +80,7 @@ import UIKit
             button.setTitle("test\(button.tag)", for: [])
             button.titleLabel?.textAlignment = .center
             button.setBackgroundImage(buttonImage, for: [])
+            button.showsTouchWhenHighlighted = true
             button.layer.masksToBounds = false
             button.layer.shadowColor = UIColor.darkGray.cgColor
             button.layer.shadowOpacity = 1.0
