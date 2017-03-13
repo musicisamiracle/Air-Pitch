@@ -23,7 +23,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     @IBOutlet weak var blowOrTapControl: TwicketSegmentedControl!
     @IBOutlet weak var infoOverlay: UIView!
     
-    private var audioSession: AVAudioSession?
+    private var audioSession: AVAudioSession!
     private var recorder: AVAudioRecorder?
     private var timer = Timer()
     private var currentButton: PlayerButton?
