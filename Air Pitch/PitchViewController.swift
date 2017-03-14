@@ -159,12 +159,10 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         }
         recorder.updateMeters()
         let power = recorder.averagePower(forChannel: 0)
-        //TODO: Change this later once the blowing sounds natural
-        // every change in 1 decible between -13 and -3 changes volume by 0.1
-        let decibleConversion = power + 3  // adding 3 to power makes -3 decibels equal to 0 change to volume
-        let volumeAdjustment = Float(decibleConversion / 10)
+        // every change in 1 decible between -10 and -0 changes volume by 0.1
+        let volumeAdjustment = Float(power / 10)
         let volume = volumeAdjustment <= 0 ? (1 + volumeAdjustment) : 1.0
-        if power >= -13 {
+        if power >= -10 {
             // Fade duration matches length of timer before repeating
             currentButton?.soundPlayer?.setVolume(volume, fadeDuration: 0.075)
             currentButton?.soundPlayer?.play()
