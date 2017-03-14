@@ -26,8 +26,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     private var timer = Timer()
     private var currentButton: PlayerButton?
     private var playMode = PlayMode.blow
-    private var microphoneAlert: UIAlertController!
-    private var alerts = [UIAlertController]()
+    private var alerts: [UIAlertController] = []
     
     enum PlayMode {
         case tap
@@ -39,14 +38,6 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         
         finishSettingUpView()
         createSoundButtons()
-        microphoneAlert = UIAlertController(title: "Microphone Access", message: "In order to use the blow function of Air Pitch, go to Settings > Privacy > Microphone and allow Air Pitch to use the microphone.", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: { [unowned self] action in
-            // Go to tap mode
-            self.blowOrTapControl.move(to: 1)
-            self.blowOrTapControl.delegate?.didSelect(1)
-            self.microphoneAlert.dismiss(animated: true, completion: nil)
-        })
-        microphoneAlert.addAction(action)
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         audioSession = appDelegate.audioSession
         recorder = appDelegate.microphoneRecorder
@@ -69,19 +60,30 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
             let alert = UIAlertController(title: "Microphone failure", message: "Using the blow function of the app will not work due to an unknown problem.", preferredStyle: .alert)
             alerts.append(alert)
         }
-        audioSession?.requestRecordPermission { [unowned self] (allowed) in
-            if !allowed {
-                self.alerts.append(self.microphoneAlert)
-            }
+        
+        if audioSession?.recordPermission() != .granted {
+            let microphoneAlert = createMicrophoneAlert()
+            alerts.append(microphoneAlert)
         }
         showAlerts()
     }
     
+    private func createMicrophoneAlert() -> UIAlertController {
+        let microphoneAlert = UIAlertController(title: "Microphone Access", message: "In order to use the blow function of Air Pitch, go to Settings > Privacy > Microphone and allow Air Pitch to use the microphone.", preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: { [weak self] action in
+            // Go to tap mode
+            self?.blowOrTapControl.move(to: 1)
+            self?.didSelect(1)
+        })
+        microphoneAlert.addAction(action)
+        return microphoneAlert
+    }
+    
     private func showAlerts() {
-        if let alert = alerts.first {
-            if alert !== microphoneAlert {
-                let action = UIAlertAction(title: "OK", style: .default, handler: { action in
-                    self.alerts.remove(at: 0)
+        if !alerts.isEmpty {
+            let alert = alerts.removeFirst()
+            if alert.title != "Microphone Access" {
+                let action = UIAlertAction(title: "OK", style: .default, handler: { [unowned self] action in
                     self.showAlerts()
                 })
                 alert.addAction(action)
@@ -241,6 +243,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     func didSelect(_ segmentIndex: Int) {
         if segmentIndex == 0 {
             if audioSession?.recordPermission() == .denied {
+                let microphoneAlert = createMicrophoneAlert()
                 present(microphoneAlert, animated: true, completion: nil)
             }
         }
