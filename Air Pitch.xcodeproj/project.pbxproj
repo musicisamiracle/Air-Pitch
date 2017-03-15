@@ -274,7 +274,7 @@
 				TargetAttributes = {
 					AB43E8361E461A050071BC4E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = MBDF9Z8ZCX;
+						DevelopmentTeam = 92672ZCS2U;
 						ProvisioningStyle = Automatic;
 					};
 					AB43E84A1E461A050071BC4E = {
@@ -639,10 +639,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = MBDF9Z8ZCX;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 92672ZCS2U;
 				INFOPLIST_FILE = "Air Pitch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Dane-Thomas.Air-Pitch";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Dane-Thomas.Air-Pitch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -655,10 +656,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = MBDF9Z8ZCX;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 92672ZCS2U;
 				INFOPLIST_FILE = "Air Pitch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Dane-Thomas.Air-Pitch";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Dane-Thomas.Air-Pitch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;

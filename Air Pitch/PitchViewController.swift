@@ -61,10 +61,12 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
             alerts.append(alert)
         }
         
-        if audioSession?.recordPermission() != .granted {
-            let microphoneAlert = createMicrophoneAlert()
-            alerts.append(microphoneAlert)
-        }
+        audioSession?.requestRecordPermission({ [unowned self] (allowed) in
+            if !allowed {
+                let alert = self.createMicrophoneAlert()
+                self.alerts.append(alert)
+            }
+        })
         
         if !alerts.isEmpty {
             showAlerts()
