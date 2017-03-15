@@ -65,7 +65,11 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
             let microphoneAlert = createMicrophoneAlert()
             alerts.append(microphoneAlert)
         }
-        showAlerts()
+        
+        if !alerts.isEmpty {
+            showAlerts()
+        }
+        
     }
     
     private func createMicrophoneAlert() -> UIAlertController {
@@ -80,16 +84,14 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     }
     
     private func showAlerts() {
-        if !alerts.isEmpty {
-            let alert = alerts.removeFirst()
-            if alert.title != "Microphone Access" {
-                let action = UIAlertAction(title: "OK", style: .default, handler: { [unowned self] action in
-                    self.showAlerts()
-                })
-                alert.addAction(action)
-            }
-            present(alert, animated: true, completion: nil)
+        let alert = alerts.removeFirst()
+        if alert.title != "Microphone Access" {
+            let action = UIAlertAction(title: "OK", style: .default, handler: { [unowned self] action in
+                self.showAlerts()
+            })
+            alert.addAction(action)
         }
+        present(alert, animated: true, completion: nil)
     }
     
     //MARK: - Actions
