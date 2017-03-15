@@ -74,19 +74,23 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     
     private func createMicrophoneAlert() -> UIAlertController {
         let microphoneAlert = UIAlertController(title: "Microphone Access", message: "In order to use the blow function of Air Pitch, go to Settings > Privacy > Microphone and allow Air Pitch to use the microphone.", preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: { [weak self] action in
+        let action = UIAlertAction(title: "OK", style: .default, handler: { action in
             // Go to tap mode
-            self?.blowOrTapControl.move(to: 1)
-            self?.didSelect(1)
+            self.blowOrTapControl.move(to: 1)
+            self.didSelect(1)
         })
         microphoneAlert.addAction(action)
         return microphoneAlert
     }
     
     private func showAlerts() {
-        let alert = alerts.removeFirst()
+        guard !alerts.isEmpty else {
+            return
+        }
+        let alert = alerts[0]
         if alert.title != "Microphone Access" {
-            let action = UIAlertAction(title: "OK", style: .default, handler: { [unowned self] action in
+            let action = UIAlertAction(title: "OK", style: .default, handler: { action in
+                self.alerts.remove(at: 0)
                 self.showAlerts()
             })
             alert.addAction(action)
