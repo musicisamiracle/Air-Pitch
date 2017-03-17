@@ -8,7 +8,7 @@ target 'Air Pitch' do
   # Pods for Air Pitch
   pod 'Pulsator'
   pod 'TwicketSegmentedControl'
-  pod 'ChameleonFramework/Swift', :git => 'https://github.com/ViccAlexander/Chameleon.git'
+  pod 'ChameleonFramework/Swift', :git => 'https://github.com/tache/Chameleon.git'
 
   target 'Air PitchTests' do
     inherit! :search_paths

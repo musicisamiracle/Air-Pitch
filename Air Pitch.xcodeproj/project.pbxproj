@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E510CD1891DAD40D46B47B1 /* Pods_Air_PitchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F71FA4ECED9EDAB2DE44C9 /* Pods_Air_PitchUITests.framework */; };
-		631A8481F25D0FF671CE86A4 /* Pods_Air_Pitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7EF983A2AB32ABD07011A1CA /* Pods_Air_Pitch.framework */; };
+		7D9323CEC4E3BA2057F24B4B /* Pods_Air_Pitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E3A45688C51D6EAA19670D4 /* Pods_Air_Pitch.framework */; };
+		879591176CEF783BEF946695 /* Pods_Air_PitchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50894B945356EFC9A186B80C /* Pods_Air_PitchUITests.framework */; };
+		A7877281E1F058D1024E82CE /* Pods_Air_PitchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3F58AA925B1BFB26E9BC73BA /* Pods_Air_PitchTests.framework */; };
 		AB16922E1E567F910060F15A /* Audio Files in Resources */ = {isa = PBXBuildFile; fileRef = AB16922D1E567F910060F15A /* Audio Files */; };
 		AB1692311E5792890060F15A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB1692301E5792890060F15A /* AVFoundation.framework */; };
 		AB43E83B1E461A050071BC4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB43E83A1E461A050071BC4E /* AppDelegate.swift */; };
@@ -21,7 +22,6 @@
 		AB5B52AC1E5DF9EE00237A04 /* SpiralButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB5B52AB1E5DF9EE00237A04 /* SpiralButtonsView.swift */; };
 		AB7643691E4A9E1F003E22E8 /* PlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */; };
 		ABF6D1FE1E67709200295495 /* AirAmericana.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ABF6D1FD1E67709200295495 /* AirAmericana.ttf */; };
-		AE7891CB4D88FCC12E838FA1 /* Pods_Air_PitchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 266B6E67BEBCC1628CCB4DBF /* Pods_Air_PitchTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,14 +42,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		14DE0A97E8DBBFD6FEBDEF7D /* Pods-Air PitchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air PitchUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Air PitchUITests/Pods-Air PitchUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		261481B2BA38B4A225096CDD /* Pods-Air PitchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air PitchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Air PitchTests/Pods-Air PitchTests.debug.xcconfig"; sourceTree = "<group>"; };
-		266B6E67BEBCC1628CCB4DBF /* Pods_Air_PitchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Air_PitchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7EF983A2AB32ABD07011A1CA /* Pods_Air_Pitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Air_Pitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F2E98F7448D4ECEC433CC65 /* Pods-Air PitchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air PitchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Air PitchTests/Pods-Air PitchTests.release.xcconfig"; sourceTree = "<group>"; };
-		9F7D176DB4EB2A653C415CC9 /* Pods-Air PitchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air PitchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Air PitchUITests/Pods-Air PitchUITests.release.xcconfig"; sourceTree = "<group>"; };
+		3F58AA925B1BFB26E9BC73BA /* Pods_Air_PitchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Air_PitchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		495807769BF47D14015786D6 /* Pods-Air Pitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air Pitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Air Pitch/Pods-Air Pitch.release.xcconfig"; sourceTree = "<group>"; };
+		50894B945356EFC9A186B80C /* Pods_Air_PitchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Air_PitchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		64A6AE7398492FA1F3A4EDB8 /* Pods-Air PitchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air PitchUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Air PitchUITests/Pods-Air PitchUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		7524B3708C4FC0FEA883F01E /* Pods-Air Pitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air Pitch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Air Pitch/Pods-Air Pitch.debug.xcconfig"; sourceTree = "<group>"; };
+		7D5DE9DD2B065EF38DFDD289 /* Pods-Air PitchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air PitchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Air PitchTests/Pods-Air PitchTests.release.xcconfig"; sourceTree = "<group>"; };
+		9E3A45688C51D6EAA19670D4 /* Pods_Air_Pitch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Air_Pitch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB16922D1E567F910060F15A /* Audio Files */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "Audio Files"; sourceTree = "<group>"; };
 		AB1692301E5792890060F15A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		AB2FFDAEC62041C9F464F219 /* Pods-Air PitchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air PitchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Air PitchUITests/Pods-Air PitchUITests.release.xcconfig"; sourceTree = "<group>"; };
 		AB43E8371E461A050071BC4E /* Air Pitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Air Pitch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB43E83A1E461A050071BC4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AB43E83C1E461A050071BC4E /* PitchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PitchViewController.swift; sourceTree = "<group>"; };
@@ -66,9 +68,7 @@
 		AB5B52AB1E5DF9EE00237A04 /* SpiralButtonsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpiralButtonsView.swift; sourceTree = "<group>"; };
 		AB7643681E4A9E1F003E22E8 /* PlayerButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerButton.swift; sourceTree = "<group>"; };
 		ABF6D1FD1E67709200295495 /* AirAmericana.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AirAmericana.ttf; sourceTree = "<group>"; };
-		B28C9D32569C0329DA2E2CD6 /* Pods-Air Pitch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air Pitch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Air Pitch/Pods-Air Pitch.debug.xcconfig"; sourceTree = "<group>"; };
-		BD409C4FE51ADCAA367C6818 /* Pods-Air Pitch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air Pitch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Air Pitch/Pods-Air Pitch.release.xcconfig"; sourceTree = "<group>"; };
-		E4F71FA4ECED9EDAB2DE44C9 /* Pods_Air_PitchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Air_PitchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F736A1778DED2BCFDAE5B877 /* Pods-Air PitchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Air PitchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Air PitchTests/Pods-Air PitchTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +77,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB1692311E5792890060F15A /* AVFoundation.framework in Frameworks */,
-				631A8481F25D0FF671CE86A4 /* Pods_Air_Pitch.framework in Frameworks */,
+				7D9323CEC4E3BA2057F24B4B /* Pods_Air_Pitch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,7 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE7891CB4D88FCC12E838FA1 /* Pods_Air_PitchTests.framework in Frameworks */,
+				A7877281E1F058D1024E82CE /* Pods_Air_PitchTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,20 +93,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E510CD1891DAD40D46B47B1 /* Pods_Air_PitchUITests.framework in Frameworks */,
+				879591176CEF783BEF946695 /* Pods_Air_PitchUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5DB49769F5C3F89C76263CE5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7524B3708C4FC0FEA883F01E /* Pods-Air Pitch.debug.xcconfig */,
+				495807769BF47D14015786D6 /* Pods-Air Pitch.release.xcconfig */,
+				F736A1778DED2BCFDAE5B877 /* Pods-Air PitchTests.debug.xcconfig */,
+				7D5DE9DD2B065EF38DFDD289 /* Pods-Air PitchTests.release.xcconfig */,
+				64A6AE7398492FA1F3A4EDB8 /* Pods-Air PitchUITests.debug.xcconfig */,
+				AB2FFDAEC62041C9F464F219 /* Pods-Air PitchUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AB16922F1E5792890060F15A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				AB1692301E5792890060F15A /* AVFoundation.framework */,
-				7EF983A2AB32ABD07011A1CA /* Pods_Air_Pitch.framework */,
-				266B6E67BEBCC1628CCB4DBF /* Pods_Air_PitchTests.framework */,
-				E4F71FA4ECED9EDAB2DE44C9 /* Pods_Air_PitchUITests.framework */,
+				9E3A45688C51D6EAA19670D4 /* Pods_Air_Pitch.framework */,
+				3F58AA925B1BFB26E9BC73BA /* Pods_Air_PitchTests.framework */,
+				50894B945356EFC9A186B80C /* Pods_Air_PitchUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -119,7 +132,7 @@
 				AB43E8591E461A050071BC4E /* Air PitchUITests */,
 				AB43E8381E461A050071BC4E /* Products */,
 				AB16922F1E5792890060F15A /* Frameworks */,
-				D0E973C5F429A738811CC6CB /* Pods */,
+				5DB49769F5C3F89C76263CE5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -184,19 +197,6 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		D0E973C5F429A738811CC6CB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				B28C9D32569C0329DA2E2CD6 /* Pods-Air Pitch.debug.xcconfig */,
-				BD409C4FE51ADCAA367C6818 /* Pods-Air Pitch.release.xcconfig */,
-				261481B2BA38B4A225096CDD /* Pods-Air PitchTests.debug.xcconfig */,
-				7F2E98F7448D4ECEC433CC65 /* Pods-Air PitchTests.release.xcconfig */,
-				14DE0A97E8DBBFD6FEBDEF7D /* Pods-Air PitchUITests.debug.xcconfig */,
-				9F7D176DB4EB2A653C415CC9 /* Pods-Air PitchUITests.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -204,12 +204,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB43E85F1E461A050071BC4E /* Build configuration list for PBXNativeTarget "Air Pitch" */;
 			buildPhases = (
-				20E6AE1D23FC2A46526D0DA0 /* [CP] Check Pods Manifest.lock */,
+				A068F0469AA5850979B59608 /* [CP] Check Pods Manifest.lock */,
 				AB43E8331E461A050071BC4E /* Sources */,
 				AB43E8341E461A050071BC4E /* Frameworks */,
 				AB43E8351E461A050071BC4E /* Resources */,
-				7B59F6DCFCDE8FBB8BF6A3F4 /* [CP] Embed Pods Frameworks */,
-				49AD8FE3D121944AC4D5E552 /* [CP] Copy Pods Resources */,
+				BD7CAEEB93AC5BB61CFDC85F /* [CP] Embed Pods Frameworks */,
+				0927EDAE59040273FE698990 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -224,12 +224,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB43E8621E461A050071BC4E /* Build configuration list for PBXNativeTarget "Air PitchTests" */;
 			buildPhases = (
-				EE5E6B5B8E0A1A185EF86166 /* [CP] Check Pods Manifest.lock */,
+				C88E4A82FA643032C8DDB679 /* [CP] Check Pods Manifest.lock */,
 				AB43E8471E461A050071BC4E /* Sources */,
 				AB43E8481E461A050071BC4E /* Frameworks */,
 				AB43E8491E461A050071BC4E /* Resources */,
-				6CAFDF1B902A5689635651AA /* [CP] Embed Pods Frameworks */,
-				44F06C8C0D9B09F1319D8439 /* [CP] Copy Pods Resources */,
+				C78612BB719FA4CCA4C90B9A /* [CP] Embed Pods Frameworks */,
+				8D0668ADA61D7E2E73EEF47E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -245,12 +245,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB43E8651E461A050071BC4E /* Build configuration list for PBXNativeTarget "Air PitchUITests" */;
 			buildPhases = (
-				7C63AE4428CD3DCDD5E4FC4F /* [CP] Check Pods Manifest.lock */,
+				8933FEE8476D13EBF99E5FB7 /* [CP] Check Pods Manifest.lock */,
 				AB43E8521E461A050071BC4E /* Sources */,
 				AB43E8531E461A050071BC4E /* Frameworks */,
 				AB43E8541E461A050071BC4E /* Resources */,
-				5B659E7BE744D46E781F49E3 /* [CP] Embed Pods Frameworks */,
-				A611FD5FD458B1DF014953C8 /* [CP] Copy Pods Resources */,
+				4EE69A8D6F4C8BD2C6306F7D /* [CP] Embed Pods Frameworks */,
+				B63531360E16E602D52691F7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -339,37 +339,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		20E6AE1D23FC2A46526D0DA0 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		44F06C8C0D9B09F1319D8439 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Air PitchTests/Pods-Air PitchTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		49AD8FE3D121944AC4D5E552 /* [CP] Copy Pods Resources */ = {
+		0927EDAE59040273FE698990 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -384,7 +354,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Air Pitch/Pods-Air Pitch-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		5B659E7BE744D46E781F49E3 /* [CP] Embed Pods Frameworks */ = {
+		4EE69A8D6F4C8BD2C6306F7D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -399,37 +369,7 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Air PitchUITests/Pods-Air PitchUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6CAFDF1B902A5689635651AA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Air PitchTests/Pods-Air PitchTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7B59F6DCFCDE8FBB8BF6A3F4 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Air Pitch/Pods-Air Pitch-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7C63AE4428CD3DCDD5E4FC4F /* [CP] Check Pods Manifest.lock */ = {
+		8933FEE8476D13EBF99E5FB7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -444,7 +384,37 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A611FD5FD458B1DF014953C8 /* [CP] Copy Pods Resources */ = {
+		8D0668ADA61D7E2E73EEF47E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Air PitchTests/Pods-Air PitchTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A068F0469AA5850979B59608 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B63531360E16E602D52691F7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -459,7 +429,37 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Air PitchUITests/Pods-Air PitchUITests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		EE5E6B5B8E0A1A185EF86166 /* [CP] Check Pods Manifest.lock */ = {
+		BD7CAEEB93AC5BB61CFDC85F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Air Pitch/Pods-Air Pitch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C78612BB719FA4CCA4C90B9A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Air PitchTests/Pods-Air PitchTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C88E4A82FA643032C8DDB679 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -633,7 +633,7 @@
 		};
 		AB43E8601E461A050071BC4E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B28C9D32569C0329DA2E2CD6 /* Pods-Air Pitch.debug.xcconfig */;
+			baseConfigurationReference = 7524B3708C4FC0FEA883F01E /* Pods-Air Pitch.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -650,7 +650,7 @@
 		};
 		AB43E8611E461A050071BC4E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BD409C4FE51ADCAA367C6818 /* Pods-Air Pitch.release.xcconfig */;
+			baseConfigurationReference = 495807769BF47D14015786D6 /* Pods-Air Pitch.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -667,7 +667,7 @@
 		};
 		AB43E8631E461A050071BC4E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 261481B2BA38B4A225096CDD /* Pods-Air PitchTests.debug.xcconfig */;
+			baseConfigurationReference = F736A1778DED2BCFDAE5B877 /* Pods-Air PitchTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -684,7 +684,7 @@
 		};
 		AB43E8641E461A050071BC4E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F2E98F7448D4ECEC433CC65 /* Pods-Air PitchTests.release.xcconfig */;
+			baseConfigurationReference = 7D5DE9DD2B065EF38DFDD289 /* Pods-Air PitchTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -701,7 +701,7 @@
 		};
 		AB43E8661E461A050071BC4E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 14DE0A97E8DBBFD6FEBDEF7D /* Pods-Air PitchUITests.debug.xcconfig */;
+			baseConfigurationReference = 64A6AE7398492FA1F3A4EDB8 /* Pods-Air PitchUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -717,7 +717,7 @@
 		};
 		AB43E8671E461A050071BC4E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F7D176DB4EB2A653C415CC9 /* Pods-Air PitchUITests.release.xcconfig */;
+			baseConfigurationReference = AB2FFDAEC62041C9F464F219 /* Pods-Air PitchUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
