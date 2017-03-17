@@ -279,14 +279,12 @@
 					};
 					AB43E84A1E461A050071BC4E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = MBDF9Z8ZCX;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = AB43E8361E461A050071BC4E;
 					};
 					AB43E8551E461A050071BC4E = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = MBDF9Z8ZCX;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						TestTargetID = AB43E8361E461A050071BC4E;
 					};
 				};
@@ -643,7 +641,7 @@
 				DEVELOPMENT_TEAM = 92672ZCS2U;
 				INFOPLIST_FILE = "Air Pitch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Dane-Thomas.Air-Pitch";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Dane-Thomas.Air-Pitch2017";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -660,7 +658,7 @@
 				DEVELOPMENT_TEAM = 92672ZCS2U;
 				INFOPLIST_FILE = "Air Pitch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Dane-Thomas.Air-Pitch";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.Dane-Thomas.Air-Pitch2017";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -673,7 +671,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = MBDF9Z8ZCX;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Air PitchTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Dane-Thomas.Air-PitchTests";
@@ -689,7 +688,8 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = MBDF9Z8ZCX;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Air PitchTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Dane-Thomas.Air-PitchTests";
@@ -704,7 +704,8 @@
 			baseConfigurationReference = 14DE0A97E8DBBFD6FEBDEF7D /* Pods-Air PitchUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = MBDF9Z8ZCX;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Air PitchUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Dane-Thomas.Air-PitchUITests";
@@ -719,7 +720,8 @@
 			baseConfigurationReference = 9F7D176DB4EB2A653C415CC9 /* Pods-Air PitchUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = MBDF9Z8ZCX;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "Air PitchUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Dane-Thomas.Air-PitchUITests";
