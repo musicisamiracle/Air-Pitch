@@ -81,18 +81,46 @@
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tHr-u3-dTE">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blow into microphone or tap a button to hear a pitch" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ac1-cZ-wb0">
-                                        <rect key="frame" x="10" y="20" width="167" height="91"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="pnp-66-h7e">
+                                        <rect key="frame" x="8" y="511" width="167" height="148"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2) Blow into microphone or tap a button to hear a pitch" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ac1-cZ-wb0">
+                                                <rect key="frame" x="0.0" y="0.0" width="167" height="91"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="91" id="DMJ-dy-W5F"/>
+                                                    <constraint firstAttribute="width" constant="167" id="uDB-Ex-ya9"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Down" translatesAutoresizingMaskIntoConstraints="NO" id="wMA-Yr-xPi">
+                                                <rect key="frame" x="58.5" y="98" width="50" height="50"/>
+                                            </imageView>
+                                        </subviews>
+                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1) Select a pitch you would like to hear" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkA-iK-F7W">
+                                        <rect key="frame" x="130.5" y="288" width="114" height="91"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="91" id="DMJ-dy-W5F"/>
-                                            <constraint firstAttribute="width" constant="167" id="uDB-Ex-ya9"/>
+                                            <constraint firstAttribute="height" constant="91" id="8Pd-NO-7bu"/>
+                                            <constraint firstAttribute="width" constant="114" id="abB-do-NHV"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Dane Thomas" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6J-Ud-910">
+                                        <rect key="frame" x="223" y="516" width="144" height="86"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="86" id="MjY-Cl-BQj"/>
+                                            <constraint firstAttribute="width" constant="144" id="oJL-uu-UIw"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="A78-bZ-C9A">
-                                        <rect key="frame" x="301" y="20" width="54" height="30"/>
+                                        <rect key="frame" x="313" y="163" width="54" height="30"/>
                                         <accessibility key="accessibilityConfiguration" label="dismiss"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="96e-yh-qPR"/>
@@ -105,37 +133,17 @@
                                             <action selector="dismissButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ead-yA-lWz"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Created by Dane Thomas" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6J-Ud-910">
-                                        <rect key="frame" x="10" y="617" width="209" height="42"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="42" id="ciX-G8-NZh"/>
-                                            <constraint firstAttribute="width" constant="209" id="gva-3L-4j5"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select a pitch you would like to hear" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkA-iK-F7W">
-                                        <rect key="frame" x="130" y="288" width="114" height="91"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="91" id="8Pd-NO-7bu"/>
-                                            <constraint firstAttribute="width" constant="114" id="abB-do-NHV"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="AmericanTypewriter" family="American Typewriter" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.54960402397260277" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="b6J-Ud-910" firstAttribute="leading" secondItem="tHr-u3-dTE" secondAttribute="leading" constant="10" id="5yx-uP-xxa"/>
-                                    <constraint firstItem="Ac1-cZ-wb0" firstAttribute="leading" secondItem="tHr-u3-dTE" secondAttribute="leading" constant="10" id="MoW-IF-pgk"/>
-                                    <constraint firstItem="Ac1-cZ-wb0" firstAttribute="top" secondItem="tHr-u3-dTE" secondAttribute="top" constant="20" id="RG9-mX-1Jh"/>
-                                    <constraint firstItem="lkA-iK-F7W" firstAttribute="centerX" secondItem="tHr-u3-dTE" secondAttribute="centerX" id="RRO-21-j3D"/>
-                                    <constraint firstItem="A78-bZ-C9A" firstAttribute="top" secondItem="tHr-u3-dTE" secondAttribute="top" constant="20" id="alw-bQ-sVP"/>
-                                    <constraint firstAttribute="trailing" secondItem="A78-bZ-C9A" secondAttribute="trailing" constant="20" id="m5v-BG-6qL"/>
-                                    <constraint firstItem="lkA-iK-F7W" firstAttribute="centerY" secondItem="tHr-u3-dTE" secondAttribute="centerY" id="thX-3O-Rww"/>
-                                    <constraint firstAttribute="bottom" secondItem="b6J-Ud-910" secondAttribute="bottom" constant="8" id="zav-SU-QAs"/>
+                                    <constraint firstAttribute="trailing" secondItem="b6J-Ud-910" secondAttribute="trailing" constant="8" id="CvT-Mp-IK2"/>
+                                    <constraint firstItem="A78-bZ-C9A" firstAttribute="top" secondItem="tHr-u3-dTE" secondAttribute="top" constant="163" id="Jcr-bF-LuP"/>
+                                    <constraint firstItem="b6J-Ud-910" firstAttribute="baseline" secondItem="Ac1-cZ-wb0" secondAttribute="baseline" id="QfG-XK-adF"/>
+                                    <constraint firstItem="pnp-66-h7e" firstAttribute="leading" secondItem="tHr-u3-dTE" secondAttribute="leading" constant="8" id="c13-LZ-IlI"/>
+                                    <constraint firstItem="lkA-iK-F7W" firstAttribute="centerX" secondItem="tHr-u3-dTE" secondAttribute="centerX" id="ecN-wy-AaH"/>
+                                    <constraint firstAttribute="bottom" secondItem="pnp-66-h7e" secondAttribute="bottom" constant="8" id="jhQ-FB-WMM"/>
+                                    <constraint firstAttribute="trailing" secondItem="A78-bZ-C9A" secondAttribute="trailing" constant="8" id="kFr-Sd-Zky"/>
+                                    <constraint firstItem="lkA-iK-F7W" firstAttribute="centerY" secondItem="tHr-u3-dTE" secondAttribute="centerY" id="kMs-wZ-VJt"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -167,4 +175,7 @@
             <point key="canvasLocation" x="117.59999999999999" y="112.89355322338831"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Down" width="50" height="50"/>
+    </resources>
 </document>
