@@ -15,6 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     var microphoneRecorder: AVAudioRecorder?
     var audioSession: AVAudioSession!
+	var vc: PitchViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         audioSession = AVAudioSession.sharedInstance()
@@ -44,11 +45,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillResignActive(_ application: UIApplication) {
         // The recorder file is not needed, so it can be deleted everytime the app goes inactive.
-        microphoneRecorder?.deleteRecording()
+		vc?.stopCurrentButton()
+		vc?.currentButton = nil
+		microphoneRecorder?.deleteRecording()
+		do {
+			try audioSession.setActive(false)
+		}
+		catch {
+			print("audio session not deactivated")
+		}
+		
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
-        microphoneRecorder?.prepareToRecord()
+		do {
+			try audioSession.setActive(true)
+		}
+		catch {
+			let alert = UIAlertController(title: "Audio Session Failure", message: "An audio session could not be initalized. Please terminate the app and try to open again.", preferredStyle: .alert)
+			vc?.alerts.append(alert)
+		}
+		
+		microphoneRecorder?.prepareToRecord()
         microphoneRecorder?.isMeteringEnabled = true
     }
 }

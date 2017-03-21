@@ -12,7 +12,7 @@ import ChameleonFramework
 import Pulsator
 import TwicketSegmentedControl
 
-class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegmentedControlDelegate {
+class PitchViewController: UIViewController, AVAudioPlayerDelegate, AVAudioSessionDelegate, TwicketSegmentedControlDelegate {
     
     //MARK: - Properties
     @IBOutlet weak var stackViewContainer: UIView!
@@ -24,9 +24,9 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     private var audioSession: AVAudioSession!
     private var recorder: AVAudioRecorder?
     private var timer = Timer()
-    private var currentButton: PlayerButton?
+    var currentButton: PlayerButton?
     private var playMode = PlayMode.blow
-    private var alerts: [UIAlertController] = []
+    var alerts: [UIAlertController] = []
     
     enum PlayMode {
         case tap
@@ -41,17 +41,11 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         audioSession = appDelegate.audioSession
         recorder = appDelegate.microphoneRecorder
+		appDelegate.vc = self
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        do {
-            try audioSession?.setActive(true)
-        }
-        catch {
-            let alert = UIAlertController(title: "Audio Session Failure", message: "An audio session could not be initalized. Please terminate the app and try to open again.", preferredStyle: .alert)
-            alerts.append(alert)
-        }
+
         if let recorder = recorder {
             recorder.prepareToRecord()
             recorder.isMeteringEnabled = true
@@ -85,7 +79,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         return microphoneAlert
     }
     
-    private func showAlerts() {
+    func showAlerts() {
         guard !alerts.isEmpty else {
             return
         }
@@ -151,10 +145,11 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         currentButton = button
     }
     
-    private func stopCurrentButton() {
+    func stopCurrentButton() {
         currentButton?.soundPlayer?.stop()
         currentButton?.pulsator.stop()
         currentButton?.isSelected = false
+		recorder?.stop()
     }
     
     func updateMicInput() {
@@ -186,7 +181,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
     
     //MARK: - AVAudioPlayerDelegate
     func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        currentButton?.isSelected = false
+        stopCurrentButton()
     }
     
     func audioPlayerDecodeErrorDidOccur(_ player: AVAudioPlayer, error: Error?) {
@@ -256,10 +251,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
             }
         }
         timer.invalidate()
-        recorder?.stop()
-        currentButton?.soundPlayer?.stop()
-        currentButton?.pulsator.stop()
-        currentButton?.isSelected = false
+        stopCurrentButton()
         currentButton = nil
         playMode = segmentIndex == 0 ? PlayMode.blow : PlayMode.tap
     }
@@ -268,5 +260,11 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, TwicketSegme
         super.didReceiveMemoryWarning()
         recorder?.deleteRecording()
     }
+	
+	//MARK: - AVAudioSessionDelegate
+	func beginInterruption() {
+		stopCurrentButton()
+		currentButton = nil
+	}
 }
 
