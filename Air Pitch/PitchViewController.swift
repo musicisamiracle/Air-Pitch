@@ -188,7 +188,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, AVAudioSessi
         currentButton = button
     }
     
-    func stopCurrentButton() {
+    private func stopCurrentButton() {
         currentButton?.soundPlayer?.stop()
         currentButton?.pulsator.stop()
         currentButton?.isSelected = false
