@@ -35,69 +35,69 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, AVAudioSessi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		
-		audioSession = AVAudioSession.sharedInstance()
-		do {
-			try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
-			try audioSession.setPreferredSampleRate(441000)
-			try audioSession.setPreferredIOBufferDuration(0.006)
-		}
-		catch {
-			// If the audio session does not get initialized, an alert shows after view appears.
-		}
-		// This file saves the recording, which does not get used again. It is necessary to create an AVAudioRecorder
-		let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
-		let filePath = documentsDirectory.appendingPathComponent("micRecording.m4a")
-		let microphoneRecordingSettings: [String : Any] = [AVFormatIDKey: kAudioFormatMPEG4AAC,
-		                                                   AVSampleRateKey: 8000.0,
-		                                                   AVNumberOfChannelsKey: 1,
-		                                                   AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue]
-		do {
-			try recorder = AVAudioRecorder(url: filePath, settings: microphoneRecordingSettings)
-		}
-		catch {
-			let alert = UIAlertController(title: "Microphone failure", message: "Using the blow function of the app will not work due to an unknown problem.", preferredStyle: .alert)
-			alerts.append(alert)
-		}
-		
+        
+        audioSession = AVAudioSession.sharedInstance()
+        do {
+            try audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, with: .defaultToSpeaker)
+            try audioSession.setPreferredSampleRate(441000)
+            try audioSession.setPreferredIOBufferDuration(0.006)
+        }
+        catch {
+            // If the audio session does not get initialized, an alert shows after view appears.
+        }
+        // This file saves the recording, which does not get used again. It is necessary to create an AVAudioRecorder
+        let documentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+        let filePath = documentsDirectory.appendingPathComponent("micRecording.m4a")
+        let microphoneRecordingSettings: [String : Any] = [AVFormatIDKey: kAudioFormatMPEG4AAC,
+                                                           AVSampleRateKey: 8000.0,
+                                                           AVNumberOfChannelsKey: 1,
+                                                           AVEncoderAudioQualityKey: AVAudioQuality.min.rawValue]
+        do {
+            try recorder = AVAudioRecorder(url: filePath, settings: microphoneRecordingSettings)
+        }
+        catch {
+            let alert = UIAlertController(title: "Microphone failure", message: "Using the blow function of the app will not work due to an unknown problem.", preferredStyle: .alert)
+            alerts.append(alert)
+        }
+        
         finishSettingUpView()
         createSoundButtons()
-		NotificationCenter.default.addObserver(self, selector: #selector(PitchViewController.willResignActive), name: .UIApplicationWillResignActive, object: nil)
-		NotificationCenter.default.addObserver(self, selector: #selector(PitchViewController.didBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PitchViewController.willResignActive), name: .UIApplicationWillResignActive, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(PitchViewController.didBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
     }
-	
-	deinit {
-		NotificationCenter.default.removeObserver(self)
-	}
-	
-	@objc private func willResignActive() {
-		stopCurrentButton()
-		currentButton = nil
-		// The recorder file is not needed, so it can be deleted everytime the app goes inactive.
-		recorder?.deleteRecording()
-		do {
-			try audioSession?.setActive(false)
-		}
-		catch {
-			print("audio session not deactivated")
-		}
-	}
-	
-	@objc private func didBecomeActive() {
-		do {
-			try audioSession.setActive(true)
-		}
-		catch {
-			let alert = UIAlertController(title: "Audio Session Failure", message: "An audio session could not be initalized. Please terminate the app and try to open again.", preferredStyle: .alert)
-			alerts.append(alert)
-		}
-		
-		recorder?.prepareToRecord()
-		recorder?.isMeteringEnabled = true
-	}
-	
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc private func willResignActive() {
+        stopCurrentButton()
+        currentButton = nil
+        // The recorder file is not needed, so it can be deleted everytime the app goes inactive.
+        recorder?.deleteRecording()
+        do {
+            try audioSession?.setActive(false)
+        }
+        catch {
+            print("audio session not deactivated")
+        }
+    }
+    
+    @objc private func didBecomeActive() {
+        do {
+            try audioSession.setActive(true)
+        }
+        catch {
+            let alert = UIAlertController(title: "Audio Session Failure", message: "An audio session could not be initalized. Please terminate the app and try to open again.", preferredStyle: .alert)
+            alerts.append(alert)
+        }
+        
+        recorder?.prepareToRecord()
+        recorder?.isMeteringEnabled = true
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
-		
+        
         audioSession?.requestRecordPermission({ [unowned self] (allowed) in
             if !allowed {
                 let alert = self.createMicrophoneAlert()
@@ -192,7 +192,7 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, AVAudioSessi
         currentButton?.soundPlayer?.stop()
         currentButton?.pulsator.stop()
         currentButton?.isSelected = false
-		recorder?.stop()
+        recorder?.stop()
     }
     
     func updateMicInput() {
@@ -303,11 +303,11 @@ class PitchViewController: UIViewController, AVAudioPlayerDelegate, AVAudioSessi
         super.didReceiveMemoryWarning()
         recorder?.deleteRecording()
     }
-	
-	//MARK: - AVAudioSessionDelegate
-	func beginInterruption() {
-		stopCurrentButton()
-		currentButton = nil
-	}
+    
+    //MARK: - AVAudioSessionDelegate
+    func beginInterruption() {
+        stopCurrentButton()
+        currentButton = nil
+    }
 }
 
